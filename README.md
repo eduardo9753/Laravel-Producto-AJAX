@@ -18,7 +18,7 @@ HERRAMIENTAS :
 4. Proveedores
 ![proveedor](https://github.com/eduardo9753/Laravel-Producto-AJAX/assets/68178186/10b3e1da-35a4-44ca-ad52-e5a5f05087fd)
 5. Productos 
-![1](https://github.com/eduardo9753/Laravel-MiAgroPeru/assets/68178186/b88080ef-b583-4999-a30f-59ada37bc90e)
+![save](https://github.com/eduardo9753/Laravel-Producto-AJAX/assets/68178186/4bd6c086-5913-48c4-a309-bc5b98978f24)
 6. Listando los datos via Ajax
 ![lista_producto](https://github.com/eduardo9753/Laravel-Producto-AJAX/assets/68178186/67f753a1-589e-480b-b69a-cc5e98c034ae)
 7. Editando los datos Via Ajax
