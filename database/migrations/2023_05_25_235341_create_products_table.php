@@ -17,6 +17,17 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('product_name');
             $table->string('product_image');
+            $table->integer('stock'); //del 1 hatas 9999
+            $table->float('precio', 4);
+
+            //si borro a un usuario tambien se debera borrar su id en esta tabla
+            $table->foreignId('user_id')->constrained()->references('id')->on('users')->onDelete('cascade');
+            //si borro un provedor tambien se debera borrar su id en esta tabla
+            $table->foreignId('provider_id')->constrained()->references('id')->on('providers')->onDelete('cascade');
+            //si borro una categoria tambien se debera borrar su id en esta tabla
+            $table->foreignId('category_id')->constrained()->references('id')->on('categories')->onDelete('cascade');
+
+
             $table->timestamps();
         });
     }

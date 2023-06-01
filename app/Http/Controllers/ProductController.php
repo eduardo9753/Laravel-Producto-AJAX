@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\Provider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -11,10 +13,21 @@ use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
+    //protegiendo rutas 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //FORMULARIO DE PRODUCTOS
     public function index()
     {
-        return view('producto.index');
+        $providers = Provider::all();
+        $categories = Category::all();
+        return view('producto.index', [
+            'providers' => $providers,
+            'categories' => $categories
+        ]);
     }
 
     //GUARDAR LOS DATOS DEL FORMULARIO
@@ -24,6 +37,8 @@ class ProductController extends Controller
         $validator = Validator::make($request->all(), [
             'product_name'  => 'required|string|unique:products',
             'product_image' => 'required|image',
+            'stock' => 'required',
+            'precio' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -45,7 +60,12 @@ class ProductController extends Controller
             if ($upload) {
                 Product::insert([
                     'product_name'  => $request->product_name,
-                    'product_image' => $nombreImagen
+                    'product_image' => $nombreImagen,
+                    'provider_id' => $request->provider_id,
+                    'category_id' => $request->category_id,
+                    'stock' => $request->stock,
+                    'precio' => $request->precio,
+                    'user_id' => auth()->user()->id
                 ]);
 
                 return response()->json([

@@ -19,26 +19,41 @@
 
 <body class="antialiased">
 
-    {{-- NAVEGACION --}}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('home.index') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('product.index') }}">Products</a>
-                    </li>
-                </ul>
+    @auth
+        {{-- NAVEGACION --}}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('home.index') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('product.index') }}">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('category.index') }}">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('provider.index') }}">Providers</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <input type="submit" class="btn-salir" value="Salir">
+                            </form>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    @endauth
 
 
     {{-- CUERPO --}}
@@ -60,6 +75,8 @@
 
     <!--FILES JS-->
     <script src="{{ asset('js/ajaxProduct.js') }}"></script>
+    <script src="{{ asset('js/ajaxCategory.js') }}"></script>
+    <script src="{{ asset('js/ajaxProovedor.js') }}"></script>
     <script src="{{ asset('js/cargarImagen.js') }}"></script>
     <script src="{{ asset('js/cargarImagenEdit.js') }}"></script>
 
