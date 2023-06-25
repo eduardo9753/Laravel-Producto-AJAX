@@ -18,7 +18,7 @@
                             <!-- Email input -->
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="email">Email address</label>
-                                <input type="email" name="email" id="form2Example1" class="form-control" />
+                                <input type="email" name="email" id="email" class="form-control" />
                             </div>
 
                             <!-- Password input -->
@@ -40,16 +40,16 @@
 
                                 <div class="col">
                                     <!-- Simple link -->
-                                    <a href="#!">Forgot password?</a>
+                                    <a href="{{ route('mail.index') }}">Olvide mi Contraseña</a>
                                 </div>
                             </div>
 
                             <!-- Submit button -->
-                            <input type="submit" class="btn btn-primary btn-block mb-4" value="Sign in">
+                            <input type="submit" class="btn btn-primary btn-block mb-4" value="Ingresar">
 
                             <!-- Register buttons -->
                             <div class="text-center">
-                                <p>Not a member? <a href="{{ route('register.index') }}">Register</a></p>
+                                <p>Quiero registrarme <a href="{{ route('register.index') }}">Register</a></p>
                             </div>
                         </form>
                     </div>

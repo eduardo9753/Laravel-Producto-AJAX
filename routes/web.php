@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ProviderController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,14 +22,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
-Route::post('/register/store', [RegisterController::class , 'store'])->name('register.store');
+Route::post('/register/store', [RegisterController::class, 'store'])->name('register.store');
 
-Route::post('/logout', [LogoutController::class , 'logout'])->name('logout');
+Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::get('/', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login/store', [LoginController::class, 'store'])->name('login.store');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
+
+//CORREO GMAIL
+Route::get('/mail', [MailController::class, 'index'])->name('mail.index');
+Route::post('/mail/send', [MailController::class, 'send'])->name('mail.send');
+Route::get('/mail/recuperar', [MailController::class , 'recover'])->name('mail.recover');
+Route::post('/mail/store', [MailController::class, 'store'])->name('mail.store');
+
 
 //AJAX PROUCTO
 Route::get('/product', [ProductController::class, 'index'])->name('product.index');
