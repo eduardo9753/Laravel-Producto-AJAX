@@ -1,0 +1,50 @@
+#header-home {
+    background-image:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.3)), url(../../img/empresa/header-home.jpeg);
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#header-home .header-titulo {
+    text-transform: uppercase;
+    color: var(--verde);
+    font-size: 80px;
+}
+#header-home .header-parrafo { color: var(--blanco); font-size: 35px;}
+
+
+#descripcion .descripcion-flex {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+#descripcion .descripcion-caja{ 
+    position: relative; /*para centrar el div con h1 y el p*/
+    
+    border-radius: 15px;
+    width: 400px;
+    height: 300px;
+    box-shadow: 1px 7px 25px 9px rgba(166,166,166,0.75);
+    -webkit-box-shadow: 1px 7px 25px 9px rgba(166,166,166,0.75);
+    -moz-box-shadow: 1px 7px 25px 9px rgba(166,166,166,0.75);
+}
+
+#descripcion .descripcion-imagen{ width: 380px; height: 380px;}
+#descripcion .descripcion-parrafo { border-bottom: 3px solid var(--verde); width: 80%; text-align: center;}
+
+
+
+#footer { background-color: var(--verde); padding: 20px;}
+#footer .grilla-footer{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 20px;
+  text-align: center;
+}
+
+#footer .grilla-footer img { width: 130px; height: 130px; border-radius: 50%;}
+#footer ul li {color: var(--blanco); font-size: 16px; font-weight: 300;}

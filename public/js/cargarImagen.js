@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
             read.readAsDataURL(input.files[0]);
         }
     }
-    $('#product_image').change(function () {
+    $('#imagen').change(function () {
         readURL(this);
     });
 

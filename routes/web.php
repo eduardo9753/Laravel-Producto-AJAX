@@ -1,13 +1,16 @@
 <?php
 
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\admin\auth\RegisterController;
+use App\Http\Controllers\admin\auth\LogoutController;
+use App\Http\Controllers\admin\auth\LoginController;
+use App\Http\Controllers\admin\category\CategoryController;
+use App\Http\Controllers\admin\juice\JuiceController;
+use App\Http\Controllers\admin\provider\ProviderController;
+use App\Http\Controllers\admin\supply\SupplyController;
+use App\Http\Controllers\admin\HomeController;
+use App\Http\Controllers\cliente\HomeControllerCliente;
+use App\Http\Controllers\cliente\MenuControllerCliente;
 use App\Http\Controllers\MailController;
-use App\Http\Controllers\ProviderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,12 +24,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//RUTAS PARA EL CLIENTE
+Route::get('/', [HomeControllerCliente::class, 'index'])->name('inicio.index');
+Route::get('/menu', [MenuControllerCliente::class , 'index'])->name('menu.index');
+Route::get('/menu/tipo/{id}', [MenuControllerCliente::class , 'show'])->name('menu.show');
+
+
+
+//RUTAS PARA EL ADMINISTRADOR
 Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
 Route::post('/register/store', [RegisterController::class, 'store'])->name('register.store');
 
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
-Route::get('/', [LoginController::class, 'index'])->name('login.index');
+Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login/store', [LoginController::class, 'store'])->name('login.store');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
@@ -39,13 +50,21 @@ Route::post('/mail/store', [MailController::class, 'store'])->name('mail.store')
 
 
 //AJAX PROUCTO
-Route::get('/product', [ProductController::class, 'index'])->name('product.index');
-Route::post('/product/save', [ProductController::class, 'save'])->name('product.save');
-Route::get('/product/fetch/products', [ProductController::class, 'fetchProducts'])->name('product.fetch');
-Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('product.show');
-Route::put('/product/update', [ProductController::class, 'update'])->name('product.update');
-Route::post('/product/delete', [ProductController::class, 'delete'])->name('product.delete');
+Route::get('/juice', [JuiceController::class, 'index'])->name('juice.index');
+Route::post('/juice/save', [JuiceController::class, 'save'])->name('juice.save');
+Route::get('/juice/fetch/juices', [JuiceController::class, 'fetchJuices'])->name('juice.fetch');
+Route::get('/juice/show/{id}', [JuiceController::class, 'show'])->name('juice.show');
+Route::put('/juice/update', [JuiceController::class, 'update'])->name('juice.update');
+Route::post('/juice/delete', [JuiceController::class, 'delete'])->name('juice.delete');
 
+
+//SUPPLIES
+Route::get('/supply', [SupplyController::class, 'index'])->name('supply.index');
+Route::post('/supply/save', [SupplyController::class, 'save'])->name('supply.save');
+Route::get('/supply/fetch/supply', [SupplyController::class, 'fetchSupplies'])->name('supply.fetch');
+Route::get('/supply/show/{id}', [SupplyController::class, 'show'])->name('supply.show');
+Route::put('/supply/update', [SupplyController::class, 'update'])->name('supply.update');
+Route::post('/supply/delete', [SupplyController::class, 'delete'])->name('supply.delete');
 
 
 //AJAX PROOVEDOR
@@ -55,7 +74,6 @@ Route::get('/provider/fetch/providers', [ProviderController::class, 'fetchProvid
 Route::get('/provider/show/{id}', [ProviderController::class, 'show'])->name('provider.show');
 Route::put('/provider/update', [ProviderController::class, 'update'])->name('provider.update');
 Route::post('/provider/delete', [ProviderController::class, 'delete'])->name('provider.delete');
-
 
 
 //AJAX CATEGORIAS

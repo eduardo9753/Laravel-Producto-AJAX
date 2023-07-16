@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    {{--ICONO DEL PROYECTO--}}
+    <link rel="icon" type="image/png" href="{{ asset('img/logo/logo.jpeg') }}">
+
     {{-- CON ESTE COMANDO SE ARREGLO ERROR: 419 --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -12,48 +15,35 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
     {{-- LINK CSS --}}
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/colores.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/generales.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nav-admin.css') }}">
+
+    {{-- LINK CSS CLIENTE--}}
+    <link rel="stylesheet" href="{{ asset('css/cliente/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cliente/menu.css') }}">
+
+    {{--LINK RESPONSIVE--}}
+    <link rel="stylesheet" href="{{ asset('css/responsive/cliente.home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive/cliente.menu.css') }}">
+
 
 </head>
 
 <body class="antialiased">
 
-    @auth
-        {{-- NAVEGACION --}}
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('home.index') }}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('product.index') }}">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('category.index') }}">Categories</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('provider.index') }}">Providers</a>
-                        </li>
 
-                        <li class="nav-item">
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <input type="submit" class="btn-salir" value="Salir">
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    @endauth
+    {{-- NAV ADMIN --}}
+    @yield('navegador')
+
+    {{--HEADER--}}
+    @yield('header')
 
 
     {{-- CUERPO --}}
@@ -63,6 +53,7 @@
 
 
     {{-- FOOTER --}}
+    @yield('footer')
 
     <!-- CDN JS BOOTSTRAP -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
@@ -74,7 +65,8 @@
 
 
     <!--FILES JS-->
-    <script src="{{ asset('js/ajaxProduct.js') }}"></script>
+    <script src="{{ asset('js/ajaxJuice.js') }}"></script>
+    <script src="{{ asset('js/ajaxSupply.js') }}"></script>
     <script src="{{ asset('js/ajaxCategory.js') }}"></script>
     <script src="{{ asset('js/ajaxProovedor.js') }}"></script>
     <script src="{{ asset('js/cargarImagen.js') }}"></script>

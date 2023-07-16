@@ -1,0 +1,58 @@
+#header-menu {
+    background-image:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.3)), url(../../img/empresa/header-menu.jpeg);
+    height: 40vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#header-menu .header-menu-titulo {
+    text-align: center;
+    padding-top: 135px;
+    color: var(--blanco);
+    color: var(--verde);
+    text-transform: uppercase;
+}
+
+#menu .menu-fondo {
+    position: relative;
+    height: 20vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#menu h3 { color: var(--blanco); font-size: 50px;}
+
+#menu .imagen-jugo { background-image:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.3)), url(../../img/empresa/menu-jugos.jpg);}
+#menu .imagen-pastel { background-image:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.3)), url(../../img/empresa/menu-pasteles.jpg);}
+#menu .imagen-sandwich { background-image:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.3)), url(../../img/empresa/menu-sandwich.jpg);}
+
+
+
+/*ESTILOS MENU PRODUCTOS*/
+#menu-productos .menu-productos-grilla {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 25px;
+}
+
+#menu-productos .menu-productos-grilla .menu-productos-caja {
+    box-shadow: 1px 7px 25px 9px var(--verde);
+    -webkit-box-shadow: 1px 7px 25px 9px var(--verdeTransparente);
+    -moz-box-shadow: 1px 7px 25px 9px var(--verdeTransparente);
+    border-top-left-radius: 20px;
+}
+
+#menu-productos .menu-productos-grilla .menu-productos-caja img {
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    object-fit: cover;
+}
+
+#menu-productos .menu-productos-descripcion { padding: 20px;}
+#menu-productos .menu-productos-descripcion .precio { color: var(--verde); font-weight: bold; font-size: 20px;}
+#menu-productos .menu-productos-descripcion .informacion { border-top: 2px solid var(--verde); padding-top: 20px; padding-bottom: 20px; text-align: justify;}
+#menu-productos .menu-productos-flex { display: flex; justify-content: space-between; align-items: center;}

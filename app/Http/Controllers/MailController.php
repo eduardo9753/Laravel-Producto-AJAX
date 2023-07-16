@@ -18,13 +18,11 @@ class MailController extends Controller
 
     public function send(Request $request)
     {
-        //validaciones
         $this->validate($request, [
             'email' => 'required|email'
         ]);
 
         Mail::to($request->email)->send(new EnviarCorreo);
-
         return back()->with('mensaje', 'Se envio un mensaje al correo proporcionado');
     }
 
@@ -35,13 +33,11 @@ class MailController extends Controller
 
     public function store(Request $request)
     {
-        //validamos los datos
         $this->validate($request, [
             'email' => 'required|max:80',
             'password' => 'required|confirmed|min:6'
         ]);
 
-        //actualizamos los datos
         $user = User::whereEmail($request->email)->first();
 
         if ($user) {

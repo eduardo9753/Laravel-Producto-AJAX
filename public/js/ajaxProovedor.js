@@ -64,7 +64,6 @@ $(function () {
             $(edit_provider_modal).find('#edit-provider-form').find('#id_provider').val(data.result.id);
             $(edit_provider_modal).find('#edit-provider-form').find('#nombre').val(data.result.nombre);
             $(edit_provider_modal).find('#edit-provider-form').find('#descripcion').val(data.result.descripcion);
-
             //mostramos el modal
             $(edit_provider_modal).modal('show');
         });
@@ -76,7 +75,6 @@ $(function () {
     $('#edit-provider-form').on('submit', function (e) {
         //QUITAR EL RECARGUE DE PAGINA
         e.preventDefault();
-
         //variable formulario
         var form = this;
         //console.log(form);
@@ -112,7 +110,6 @@ $(function () {
     //BOTON
     $(document).on('click', '#delete-provider-btn', function () {
         var provider_id = $(this).data('id'); //ata-id
-
         //Ruta
         var url = '/provider/delete';
 

@@ -48,13 +48,13 @@ $(function () {
     $(document).on('click', '#edit-category-btn', function () {
         var category_id = $(this).data('id');
         //console.log(category_id);
-
         var url = '/category/show/' + category_id + '';
 
         $.get(url, {}, function (data) {
             var edit_category_modal = $('#edit-category-modal');
             $(edit_category_modal).find('#edit-category-form').find('#id_category').val(data.result.id);
             $(edit_category_modal).find('#edit-category-form').find('#nombre').val(data.result.nombre);
+            //mostrando el modal y el formulario con los datos
             $(edit_category_modal).modal('show');
         });
     });
