@@ -1,5 +1,10 @@
 $(function () {
 
+    count_juice = $('#count_juice').val();
+    if(count_juice >= 1){ setInterval(contador,1000); }
+    function contador(){ fetchAllJuices(); console.log('desde juice');}
+
+
     //GUARDAR DATOS VIA AJAX FORMULARIO
     $('#form').on('submit', function (e) {
         e.preventDefault(); //PARA RETENER EL RECARGE DE LA PAGINA
@@ -107,25 +112,25 @@ $(function () {
 
 
     //ELIMINAR PRODUCTO FORMULARIO
-    $(document).on('click', '#deleteBtn', function (e) {
+    $(document).on('click', '#delete-juice-btn', function (e) {
 
-        var product_id = $(this).data('id'); // data-id
+        var juice_id = $(this).data('id'); // data-id
         //Ruta: aqui se posa el id pero sin las llave
-        var url = '/product/delete';
+        var url = '/juice/delete';
 
-        if (confirm('Are you sure you want to delete this product')) {
+        if (confirm('Seguro que quiere eliminar este producto')) {
             $.ajax({
                 headers : {
                     'X-CSRF-TOKEN' : $ ( 'meta[name="csrf-token"]' ) . attr ( 'content' )
                 },
                 url: url,
                 method: 'POST',
-                data: { product_id: product_id },
+                data: { juice_id: juice_id },
                 dataType: 'json',
 
                 success: function (data) {
                     if (data.code == 1) {
-                        fetchAllProducts();
+                        fetchAllJuices();
                     } else {
                         console.log(data.msg);
                     }

@@ -20,6 +20,7 @@
                                 @csrf
 
                                 <div class="form-group my-2">
+                                    <input type="text" name="count_category" id="count_category" value="{{ $categories->count() }}" hidden>
                                     <label for="nombre" class="my-2">Nombre Categoria</label>
                                     <input type="text" class="form-control" id="nombre" name="nombre"
                                         placeholder="Nombre de la Categoria">
@@ -35,7 +36,7 @@
                     </div>
                 </div>
 
-
+               
                 <div class="col-md-6 mt-5">
                     <div class="card">
                         <div class="card-header bg-dark text-white">All Categories</div>

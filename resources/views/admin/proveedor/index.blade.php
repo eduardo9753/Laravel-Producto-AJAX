@@ -21,6 +21,7 @@
 
                                 <div class="form-group my-2">
                                     <label for="nombre" class="my-2">Nombre Provedor</label>
+                                    <input type="text" name="count_provider" id="count_provider" value="{{ $providers->count() }}" hidden>
                                     <input type="text" class="form-control" id="nombre" name="nombre"
                                         placeholder="Nombre del producto">
                                     {{-- alerta de error --}}

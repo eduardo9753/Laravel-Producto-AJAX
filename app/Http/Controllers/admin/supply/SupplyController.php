@@ -16,8 +16,10 @@ class SupplyController extends Controller
     public function index()
     {
         $categories = Category::all();
+        $supplies = Supply::all();
         return view('admin.suministro.index', [
-            'categories' => $categories
+            'categories' => $categories,
+            'supplies' =>  $supplies
         ]);
     }
 

@@ -13,7 +13,7 @@
                             <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#edit-juice-modal"
                                 id="edit-juice-btn" data-id="{{ $juice->id }}">Edit</button>
 
-                            <button class="btn btn-sm btn-danger" id="deleteBtn"
+                            <button class="btn btn-sm btn-danger" id="delete-juice-btn"
                                 data-id="{{ $juice->id }}">Delete</button>
                         </div>
                     </div>

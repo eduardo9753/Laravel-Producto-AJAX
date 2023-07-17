@@ -18,7 +18,10 @@ class CategoryController extends Controller
     //VISTA DE LA CATEGORIA
     public function index()
     {
-        return view('admin.categoria.index');
+        $categories = Category::all();
+        return view('admin.categoria.index',[
+            'categories' => $categories
+        ]);
     }
 
     //GUARDAR DAROS CATEGORIA VIA AJAX

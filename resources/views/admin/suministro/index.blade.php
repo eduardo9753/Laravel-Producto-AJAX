@@ -7,20 +7,21 @@
 
 
 @section('main')
-    <section>
+    <section id="supply">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mt-5">
                     <div class="card">
                         <div class="card-header bg-dark text-white">Add new Supply</div>
                         <div class="card-body">
-                            <form action="{{ route('supply.save') }}" id="form" method="POST"
+                            <form action="{{ route('supply.save') }}" id="form-supply" method="POST"
                                 enctype="application/x-www-form-urlencoded">
 
                                 @csrf
 
                                 <div class="form-group my-2">
                                     <label for="nombre" class="my-2">Nombre Suministro</label>
+                                    <input type="text" name="count_supply" id="count_supply" value="{{ $supplies->count() }}" hidden>
                                     <input type="text" class="form-control" id="nombre" name="nombre"
                                         placeholder="Nombre del producto">
                                     {{-- alerta de error --}}
@@ -71,7 +72,7 @@
 
                 <div class="col-md-6 mt-5">
                     <div class="card">
-                        <div class="card-header bg-dark text-white">All Product</div>
+                        <div class="card-header bg-dark text-white">All Supplies</div>
                         {{-- AQUI SE VAN A CARGAR LOS DATOS CON VIA AJAX --}}
                         <div class="card-body" id="AllSupplies">
                         </div>

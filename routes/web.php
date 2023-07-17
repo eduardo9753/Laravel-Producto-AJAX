@@ -37,7 +37,7 @@ Route::post('/register/store', [RegisterController::class, 'store'])->name('regi
 
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
-Route::get('/login', [LoginController::class, 'index'])->name('login.index');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login/store', [LoginController::class, 'store'])->name('login.store');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');

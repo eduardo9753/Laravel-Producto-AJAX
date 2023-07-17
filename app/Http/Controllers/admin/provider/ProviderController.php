@@ -19,7 +19,10 @@ class ProviderController extends Controller
     //FORMULARIO Y TABLA DE PROVEDORES
     public function index()
     {
-        return view('admin.proveedor.index');
+        $providers = Provider::all();
+        return view('admin.proveedor.index',[
+            'providers' => $providers
+        ]);
     }
 
 

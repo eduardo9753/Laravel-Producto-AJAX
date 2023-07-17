@@ -21,6 +21,7 @@
 
                                 <div class="form-group my-2">
                                     <label for="nombre" class="my-2">Nombre </label>
+                                    <input type="text" name="count_juice" id="count_juice" value="{{ $juices->count() }}" hidden>
                                     <input type="text" class="form-control" id="nombre" name="nombre"
                                         placeholder="Nombre del producto">
                                     {{-- alerta de error --}}

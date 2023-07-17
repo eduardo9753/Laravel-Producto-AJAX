@@ -1,5 +1,9 @@
 $(function () {
 
+    count_provider = $('#count_provider').val();
+    if(count_provider >= 1){ setInterval(contador,1000); }
+    function contador(){ fetchAllProviders(); console.log('desde provider');}
+
     //GUARDAR DATOS DEL PROVEDOR VIA AJAX FORMULARIO
     $('#form-provider').on('submit', function (e) {
         //QUITAR EL RECARGUE DE PAGINA

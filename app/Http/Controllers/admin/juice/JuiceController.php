@@ -25,8 +25,10 @@ class JuiceController extends Controller
     public function index()
     {
         $types = Type::all();
+        $juices = Juice::all();
         return view('admin.jugo.index', [
-            'types' => $types
+            'types' => $types,
+            'juices' => $juices
         ]);
     }
 
@@ -164,24 +166,24 @@ class JuiceController extends Controller
     //ELIMINANDO LOS PRODUCTOS
     public function delete(Request $request)
     {
-        $product = Juice::find($request->product_id);
-        if ($product->product_image) {
-            $path_delete = public_path('storage/files/' . $product->product_image);
+        $juice = Juice::find($request->juice_id);
+        if ($juice->imagen) {
+            $path_delete = public_path('storage/files/' . $juice->imagen);
             if (File::exists($path_delete)) {
                 unlink($path_delete);
             }
         }
 
-        $query = $product->delete();
+        $query = $juice->delete();
         if ($query) {
             return response()->json([
                 'code' => 1,
-                'msg' => 'Product has been deleted'
+                'msg' => 'Producto Eliminado'
             ]);
         } else {
             return response()->json([
                 'code' => 0,
-                'msg' => 'Something went wrong'
+                'msg' => 'Hubo un error'
             ]);
         }
     }

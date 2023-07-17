@@ -1,4 +1,11 @@
 $(function () {
+
+    count_category = $('#count_category').val();
+    if(count_category >= 1){ setInterval(contador,1000); }
+    function contador(){ fecthAllCategories(); console.log('desde category');}
+    
+
+
     //GUARDAR DATOS VIA AJAX
     $('#form-category').on('submit', function (e) {
         e.preventDefault(); //PARA TETENER EL RECARGE DE LA PAGINA
@@ -59,7 +66,7 @@ $(function () {
         });
     });
 
-    
+
     //FUNCION PARA ACTUALIZAR LOS PRODUCTOS
     $('#edit-category-form').on('submit', function (e) {
         e.preventDefault()

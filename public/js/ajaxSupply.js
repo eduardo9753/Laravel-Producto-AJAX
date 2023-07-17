@@ -1,7 +1,11 @@
 $(function () {
 
+    count_supply = $('#count_supply').val();
+    if(count_supply >= 1){ setInterval(contador,1000); }
+    function contador(){ fetchAllSupplies(); console.log('desde supply:'+count_supply);}
+
     //GUARDAR DATOS VIA AJAX FORMULARIO
-    $('#form').on('submit', function (e) {
+    $('#form-supply').on('submit', function (e) {
         e.preventDefault(); //PARA RETENER EL RECARGE DE LA PAGINA
         //variable del formulario
         var form = this;
@@ -103,20 +107,20 @@ $(function () {
 
 
     //ELIMINAR PRODUCTO FORMULARIO
-    $(document).on('click', '#deleteBtn', function (e) {
+    $(document).on('click', '#delete-supply-btn', function (e) {
 
-        var product_id = $(this).data('id'); // data-id
+        var supply_id = $(this).data('id'); // data-id
         
         var url = '/supply/delete';
 
-        if (confirm('Are you sure you want to delete this product')) {
+        if (confirm('Seguro que quiere eliminar este suministro')) {
             $.ajax({
                 headers : {
                     'X-CSRF-TOKEN' : $ ( 'meta[name="csrf-token"]' ) . attr ( 'content' )
                 },
                 url: url,
                 method: 'POST',
-                data: { product_id: product_id },
+                data: { supply_id: supply_id },
                 dataType: 'json',
 
                 success: function (data) {
