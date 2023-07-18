@@ -73,7 +73,7 @@
 
                             <!-- Register buttons -->
                             <div class="text-center">
-                                <p>Logearse <a href="{{ route('login.index') }}">Login</a></p>
+                                <p>Logearse <a href="{{ route('login') }}">Login</a></p>
                             </div>
                         </form>
                     </div>

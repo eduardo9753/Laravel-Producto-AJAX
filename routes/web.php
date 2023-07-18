@@ -3,11 +3,13 @@
 use App\Http\Controllers\admin\auth\RegisterController;
 use App\Http\Controllers\admin\auth\LogoutController;
 use App\Http\Controllers\admin\auth\LoginController;
+use App\Http\Controllers\admin\caja\CajaController;
 use App\Http\Controllers\admin\category\CategoryController;
 use App\Http\Controllers\admin\juice\JuiceController;
 use App\Http\Controllers\admin\provider\ProviderController;
 use App\Http\Controllers\admin\supply\SupplyController;
 use App\Http\Controllers\admin\HomeController;
+use App\Http\Controllers\cliente\ContactoControllerCliente;
 use App\Http\Controllers\cliente\HomeControllerCliente;
 use App\Http\Controllers\cliente\MenuControllerCliente;
 use App\Http\Controllers\MailController;
@@ -26,8 +28,10 @@ use Illuminate\Support\Facades\Route;
 
 //RUTAS PARA EL CLIENTE
 Route::get('/', [HomeControllerCliente::class, 'index'])->name('inicio.index');
-Route::get('/menu', [MenuControllerCliente::class , 'index'])->name('menu.index');
-Route::get('/menu/tipo/{id}', [MenuControllerCliente::class , 'show'])->name('menu.show');
+Route::get('/menu', [MenuControllerCliente::class, 'index'])->name('menu.index');
+Route::get('/menu/tipo/{id}', [MenuControllerCliente::class, 'show'])->name('menu.show');
+Route::get('/contacto', [ContactoControllerCliente::class, 'index'])->name('contacto.index');
+
 
 
 
@@ -45,8 +49,14 @@ Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 //CORREO GMAIL
 Route::get('/mail', [MailController::class, 'index'])->name('mail.index');
 Route::post('/mail/send', [MailController::class, 'send'])->name('mail.send');
-Route::get('/mail/recuperar', [MailController::class , 'recover'])->name('mail.recover');
+Route::get('/mail/recuperar', [MailController::class, 'recover'])->name('mail.recover');
 Route::post('/mail/store', [MailController::class, 'store'])->name('mail.store');
+
+
+//CAJA
+Route::get('/caja', [CajaController::class, 'index'])->name('caja.index');
+Route::post('/caja/save', [CajaController::class, 'save'])->name('caja.save');
+Route::delete('/caja/save', [CajaController::class, 'delete'])->name('caja.delete');
 
 
 //AJAX PROUCTO
@@ -82,3 +92,4 @@ Route::post('/category/save', [CategoryController::class, 'save'])->name('catego
 Route::get('/category/fetch/categories', [CategoryController::class, 'fecthCategories'])->name('category.fetch');
 Route::get('/category/show/{id}', [CategoryController::class, 'show'])->name('category.show');
 Route::put('/category/update', [CategoryController::class, 'update'])->name('category.update');
+Route::post('/category/delete', [CategoryController::class, 'delete'])->name('category.delete');

@@ -34,6 +34,7 @@ class SupplyController extends Controller
             'nombre' => 'required|string|unique:categories',
             'precio' => 'required',
             'stock' => 'required',
+            'category_id' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -122,6 +123,24 @@ class SupplyController extends Controller
             return response()->json([
                 'code' => 1,
                 'msg' => 'Suministro Actualizado'
+            ]);
+        }
+    }
+
+    public function delete(Request $request)
+    {
+        $supplies = Supply::find($request->supply_id);
+        $query = $supplies->delete();
+
+        if ($query) {
+            return response()->json([
+                'code' => 1,
+                'msg' => 'Suministro Eliminado'
+            ]);
+        } else {
+            return response()->json([
+                'code' => 0,
+                'msg' => 'Hubo un error'
             ]);
         }
     }

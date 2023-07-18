@@ -12,7 +12,7 @@
             <tbody>
                 @foreach ($categories as $category)
                     <tr>
-                        <th scope="row">p-{{ $category->id }}</th>
+                        <th scope="row">{{ $category->id }}</th>
                         <td>{{ $category->nombre }}</td>
 
                         <td>

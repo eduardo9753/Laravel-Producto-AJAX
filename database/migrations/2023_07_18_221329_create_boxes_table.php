@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJuicesTable extends Migration
+class CreateBoxesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,24 +13,17 @@ class CreateJuicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('juices', function (Blueprint $table) {
+        Schema::create('boxes', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');    //jugo especial
-            $table->string('imagen');    //jugoespecial.png
-            $table->double('precio');    //9.80
-            $table->text('descripcion'); //descripcion del producto
-            
+            $table->double('egreso');
+            $table->double('ingreso');
+            $table->date('fecha');
+
             $table->foreignId('user_id')
                 ->constrained('id')
                 ->on('users')
                 ->onDelete('cascade'); //usuario quien registra
-
-            $table->foreignId('type_id')
-                ->nullable()
-                ->constrained('id')
-                ->on('types')
-                ->nullOnDelete('true'); //tipo de jugo
-
+                
             $table->timestamps();
         });
     }
@@ -42,6 +35,6 @@ class CreateJuicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('juices');
+        Schema::dropIfExists('boxes');
     }
 }

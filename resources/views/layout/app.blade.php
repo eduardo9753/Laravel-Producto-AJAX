@@ -23,23 +23,24 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/colores.css') }}">
     <link rel="stylesheet" href="{{ asset('css/generales.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/nav-admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nav-cliente.css') }}">
 
     {{-- LINK CSS CLIENTE--}}
     <link rel="stylesheet" href="{{ asset('css/cliente/home.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cliente/menu.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cliente/contacto.css') }}">
 
     {{--LINK RESPONSIVE--}}
     <link rel="stylesheet" href="{{ asset('css/responsive/cliente.home.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive/cliente.menu.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('css/responsive/nav-cliente.css') }}">
 
 </head>
 
 <body class="antialiased">
 
 
-    {{-- NAV ADMIN --}}
+    {{-- NAV --}}
     @yield('navegador')
 
     {{--HEADER--}}

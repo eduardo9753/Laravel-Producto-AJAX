@@ -14,7 +14,7 @@
             <tbody>
                 @foreach ($providers as $provider)
                     <tr>
-                        <th scope="row">p-{{ $provider->id }}</th>
+                        <th scope="row">{{ $provider->id }}</th>
                         <td>{{ $provider->nombre }}</td>
                         <td>{{ $provider->descripcion }}</td>
 

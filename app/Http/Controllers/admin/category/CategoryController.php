@@ -102,4 +102,22 @@ class CategoryController extends Controller
             ]);
         }
     }
+
+    public function delete(Request $request)
+    {
+        $categories = Category::find($request->category_id);
+        $query = $categories->delete();
+
+        if ($query) {
+            return response()->json([
+                'code' => 1,
+                'msg' => 'Proveedor Eliminado'
+            ]);
+        } else {
+            return response()->json([
+                'code' => 0,
+                'msg' => 'Hubo un error'
+            ]);
+        }
+    }
 }

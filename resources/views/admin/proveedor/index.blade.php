@@ -24,7 +24,7 @@
                                     <input type="text" name="count_provider" id="count_provider"
                                         value="{{ $providers->count() }}" hidden>
                                     <input type="text" class="form-control" id="nombre" name="nombre"
-                                        placeholder="Nombre del producto">
+                                        placeholder="Laive - gloria - San fernando">
                                     {{-- alerta de error --}}
                                     <span class="text-danger error-text nombre_error"></span>
                                 </div>

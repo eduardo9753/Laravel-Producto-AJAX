@@ -1,0 +1,15 @@
+#header-contacto {
+    background-image:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.3)), url(../../img/empresa/header-contactos.jpg);
+    height: 40vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#header-contacto .header-contacto-titulo {
+    text-align: center;
+    padding-top: 135px;
+    color: var(--blanco);
+    color: var(--verde);
+    text-transform: uppercase;
+}

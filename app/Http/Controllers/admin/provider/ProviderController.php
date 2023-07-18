@@ -31,7 +31,7 @@ class ProviderController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nombre' => 'required|string|unique:providers',
-            'descripcion' => 'required|string',
+            'descripcion' => 'string',
         ]);
 
         if ($validator->fails()) {

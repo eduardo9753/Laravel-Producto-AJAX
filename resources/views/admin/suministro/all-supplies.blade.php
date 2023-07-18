@@ -13,7 +13,7 @@
             <tbody>
                 @foreach ($supplies as $supply)
                     <tr>
-                        <th scope="row">p-{{ $supply->id }}</th>
+                        <th scope="row">{{ $supply->id }}</th>
                         <td>{{ $supply->nombre }}</td>
 
                         <td>

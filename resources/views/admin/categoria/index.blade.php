@@ -23,7 +23,7 @@
                                     <input type="text" name="count_category" id="count_category" value="{{ $categories->count() }}" hidden>
                                     <label for="nombre" class="my-2">Nombre Categoria</label>
                                     <input type="text" class="form-control" id="nombre" name="nombre"
-                                        placeholder="Nombre de la Categoria">
+                                        placeholder="pan - embutidos - especias">
                                     {{-- alerta de error --}}
                                     <span class="text-danger error-text nombre_error"></span>
                                 </div>

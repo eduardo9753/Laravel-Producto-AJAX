@@ -24,7 +24,7 @@
                                     <input type="text" name="count_juice" id="count_juice" value="{{ $juices->count() }}"
                                         hidden>
                                     <input type="text" class="form-control" id="nombre" name="nombre"
-                                        placeholder="Nombre del producto">
+                                        placeholder="jugo especial - torta helada">
                                     {{-- alerta de error --}}
                                     <span class="text-danger error-text nombre_error"></span>
                                 </div>
@@ -45,7 +45,7 @@
                                         <div class="form-group my-2">
                                             <label for="precio" class="my-2">Precio del Producto</label>
                                             <input type="text" class="form-control" name="precio" id="precio"
-                                                placeholder="Precio">
+                                                placeholder="8.90">
                                             {{-- alerta de error --}}
                                             <span class="text-danger error-text precio_error"></span>
                                         </div>

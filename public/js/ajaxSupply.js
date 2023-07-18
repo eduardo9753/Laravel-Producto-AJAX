@@ -125,7 +125,7 @@ $(function () {
 
                 success: function (data) {
                     if (data.code == 1) {
-                        fetchAllProducts();
+                        fetchAllSupplies();
                     } else {
                         console.log(data.msg);
                     }

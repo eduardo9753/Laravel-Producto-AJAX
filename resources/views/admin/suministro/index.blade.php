@@ -24,7 +24,7 @@
                                     <input type="text" name="count_supply" id="count_supply"
                                         value="{{ $supplies->count() }}" hidden>
                                     <input type="text" class="form-control" id="nombre" name="nombre"
-                                        placeholder="Nombre del producto">
+                                        placeholder="pan bimbo">
                                     {{-- alerta de error --}}
                                     <span class="text-danger error-text nombre_error"></span>
                                 </div>
@@ -35,7 +35,7 @@
                                         <div class="form-group my-2">
                                             <label for="precio" class="my-2">Precio del Producto</label>
                                             <input type="text" class="form-control" name="precio" id="precio"
-                                                placeholder="Precio">
+                                                placeholder="11.90">
                                             {{-- alerta de error --}}
                                             <span class="text-danger error-text precio_error"></span>
                                         </div>
@@ -57,7 +57,7 @@
                                         <div class="form-group my-2">
                                             <label for="stock" class="my-2">Stock del Producto</label>
                                             <input type="text" class="form-control" name="stock" id="stock"
-                                                placeholder="Stock">
+                                                placeholder="10">
                                             {{-- alerta de error --}}
                                             <span class="text-danger error-text stock_error"></span>
                                         </div>

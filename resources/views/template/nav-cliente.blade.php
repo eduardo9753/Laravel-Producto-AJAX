@@ -6,7 +6,7 @@
                 <ul class="menu-item">
                     <li class="item"><a href="{{ route('inicio.index') }}">Inicio</a></li>
                     <li class="item"><a href="{{ route('menu.index') }}">El Menú</a></li>
-                    <li class="item"><a href="">Contacto</a></li>
+                    <li class="item"><a href="{{ route('contacto.index') }}">Contacto</a></li>
                 </ul>
             </nav>
             <label for="btn-menu"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-x"
@@ -26,7 +26,7 @@
                 <label for="btn-menu">
                     <div class="logo">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2"
-                            width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6f32be"
+                            width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00bfd8"
                             fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M4 6l16 0" />

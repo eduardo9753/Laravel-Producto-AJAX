@@ -36,6 +36,12 @@
                     <h3>sandwich</h3>
                 </div>
             </a>
+
+            <a href="{{ route('menu.show', ['id'=>4]) }}">
+                <div class="menu-fondo imagen-promocion centrar-div">
+                    <h3>promociones</h3>
+                </div>
+            </a>
         </div>
     </section>
 @endsection

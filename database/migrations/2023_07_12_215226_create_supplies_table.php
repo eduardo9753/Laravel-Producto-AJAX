@@ -29,7 +29,7 @@ class CreateSuppliesTable extends Migration
             $table->foreignId('category_id')
                 ->nullable()
                 ->constrained('id')
-                ->on('categories')->nullOnDelete();
+                ->on('categories')->nullOnDelete('true');
 
             $table->timestamps();
         });

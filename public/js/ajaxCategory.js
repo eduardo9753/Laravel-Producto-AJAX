@@ -99,4 +99,33 @@ $(function () {
         });
     });
 
+    //ELIMINAR DATOS CATEOORIA DE LA TABLA 
+    //BOTON
+    $(document).on('click', '#delete-category-btn', function () {
+        var category_id = $(this).data('id'); //ata-id
+        //Ruta
+        var url = '/category/delete';
+
+        if (confirm('Quieres eliminar esta categoria de la Base de Datos')) {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+
+                url: url,
+                method: 'POST',
+                data: { category_id: category_id },
+                dataType: 'json',
+
+                success: function (data) {
+                    if (data.code == 1) {
+                        fecthAllCategories();
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            });
+        }
+    });
+
 })
