@@ -37,6 +37,6 @@
     </div>
 @else
     <div class="card">
-        <div class="card-header bg-dark text-white">Empty Providers</div>
+        <div class="card-header bg-dark text-white">Sin Proovedores</div>
     </div>
 @endif

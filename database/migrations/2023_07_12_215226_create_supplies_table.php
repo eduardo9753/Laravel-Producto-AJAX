@@ -18,10 +18,19 @@ class CreateSuppliesTable extends Migration
             $table->string('nombre');    //pan bimbo
             $table->float('precio', 4);  //9.80
             $table->integer('stock');    //del 1 hatas 9999
+
             //si borro a un usuario tambien se debera borrar su id en esta tabla
-            $table->foreignId('user_id')->constrained()->references('id')->on('users')->onDelete('cascade');
-            //si borro una categoria tambien se debera borrar su id en esta tabla
-            $table->foreignId('category_id')->constrained()->references('id')->on('categories')->onDelete('cascade');
+            $table->foreignId('user_id')
+                ->constrained('id')
+                ->on('users')
+                ->onDelete('cascade');
+
+            //si borro una categoria acepta id null mas no borramos el suministro
+            $table->foreignId('category_id')
+                ->nullable()
+                ->constrained('id')
+                ->on('categories')->nullOnDelete();
+
             $table->timestamps();
         });
     }

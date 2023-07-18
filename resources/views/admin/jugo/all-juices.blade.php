@@ -23,6 +23,6 @@
     </div>
 @else
     <div class="card">
-        <div class="card-header bg-dark text-white">Empty Juices</div>
+        <div class="card-header bg-dark text-white">Sin Jugos</div>
     </div>
 @endif

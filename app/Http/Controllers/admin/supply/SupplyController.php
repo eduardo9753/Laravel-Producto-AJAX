@@ -4,7 +4,9 @@ namespace App\Http\Controllers\admin\supply; //RUTA DE LA CARPETA DEL CONTROLADO
 
 use App\Http\Controllers\Controller; //EXTENSION DEL CONTROLLADOR GENERAL
 use App\Models\Category;
+use App\Models\Provider;
 use App\Models\Supply;
+use App\Models\SupplyProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -16,10 +18,12 @@ class SupplyController extends Controller
     public function index()
     {
         $categories = Category::all();
+        $providers  = Provider::all();
         $supplies = Supply::all();
         return view('admin.suministro.index', [
             'categories' => $categories,
-            'supplies' =>  $supplies
+            'providers' =>  $providers,
+            'supplies' => $supplies
         ]);
     }
 
@@ -38,7 +42,7 @@ class SupplyController extends Controller
                 'error' => $validator->errors()->toArray()
             ]);
         } else {
-            $save = Supply::insert([
+            $save = Supply::create([ //con create podemos acceder al ultimo id
                 'nombre' => $request->nombre,
                 'precio' => $request->precio,
                 'stock' => $request->stock,
@@ -47,6 +51,13 @@ class SupplyController extends Controller
             ]);
 
             if ($save) {
+                $ultimo_id_supply = $save->id;
+
+                SupplyProvider::create([
+                    'provider_id' => $request->provider_id,
+                    'supply_id' => $ultimo_id_supply
+                ]);
+
                 return response()->json([
                     'code' => 1,
                     'msg' => 'Suministro agregada correctamente'

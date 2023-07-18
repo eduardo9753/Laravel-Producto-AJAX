@@ -7,7 +7,7 @@
             <div class="col-md-6 mx-auto mt-5">
                 <div class="card">
                     <div class="card-header text-white bg-dark text-center">
-                        <h1>Login</h1>
+                        <h1>Login-Frutimanía</h1>
                     </div>
                     <div class="card-body">
                         <form action="{{ route('login.store') }}" method="POST">

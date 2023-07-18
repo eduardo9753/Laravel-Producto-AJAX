@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin\category; //RUTA DE LA CARPETA DEL CONTROLA
 
 use App\Http\Controllers\Controller; //EXTENSION DEL CONTROLLADOR GENERAL
 use App\Models\Category;
+use App\Models\Provider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -19,8 +20,10 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('admin.categoria.index',[
-            'categories' => $categories
+        $providers = Provider::all();
+        return view('admin.categoria.index', [
+            'categories' => $categories,
+            'providers' => $providers
         ]);
     }
 

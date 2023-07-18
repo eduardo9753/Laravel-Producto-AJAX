@@ -34,6 +34,6 @@
     </div>
 @else
     <div class="card">
-        <div class="card-header bg-dark text-white">Empty Categories</div>
+        <div class="card-header bg-dark text-white">Sin Categorias</div>
     </div>
 @endif

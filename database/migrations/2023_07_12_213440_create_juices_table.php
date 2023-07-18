@@ -19,8 +19,18 @@ class CreateJuicesTable extends Migration
             $table->string('imagen');    //jugoespecial.png
             $table->double('precio');    //9.80
             $table->text('descripcion'); //descripcion del producto
-            $table->foreignId('user_id')->constrained('id')->on('users')->orDelete('cascade'); //usuario quien registra
-            $table->foreignId('type_id')->constrained('id')->on('types')->orDelete('cascade'); //tipo de jugo
+            
+            $table->foreignId('user_id')
+                ->constrained('id')
+                ->on('users')
+                ->onDelete('cascade'); //usuario quien registra
+
+            $table->foreignId('type_id')
+                ->nullable()
+                ->constrained('id')
+                ->on('types')
+                ->nullOnDelete(); //tipo de jugo
+
             $table->timestamps();
         });
     }

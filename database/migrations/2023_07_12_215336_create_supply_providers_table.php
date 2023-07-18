@@ -16,9 +16,16 @@ class CreateSupplyProvidersTable extends Migration
         Schema::create('supply_providers', function (Blueprint $table) {
             $table->id();
             //si borro un provedor tambien se debera borrar su id en esta tabla
-            $table->foreignId('provider_id')->constrained()->references('id')->on('providers')->onDelete('cascade');
+            $table->foreignId('provider_id')
+                ->constrained('id')
+                ->on('providers')
+                ->onDelete('cascade');
+
             //si borro un provedor tambien se debera borrar su id en esta tabla
-            $table->foreignId('supply_id')->constrained()->references('id')->on('supplies')->onDelete('cascade');
+            $table->foreignId('supply_id')
+                ->constrained('id')
+                ->on('supplies')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

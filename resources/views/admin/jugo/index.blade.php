@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-md-6 mt-5">
                     <div class="card">
-                        <div class="card-header bg-dark text-white">Add new Juice</div>
+                        <div class="card-header bg-dark text-white">Agregar nuevo Jugo</div>
                         <div class="card-body">
                             <form action="{{ route('juice.save') }}" id="form" method="POST"
                                 enctype="application/x-www-form-urlencoded">
@@ -20,8 +20,9 @@
                                 @csrf
 
                                 <div class="form-group my-2">
-                                    <label for="nombre" class="my-2">Nombre </label>
-                                    <input type="text" name="count_juice" id="count_juice" value="{{ $juices->count() }}" hidden>
+                                    <label for="nombre" class="my-2">Nombre</label>
+                                    <input type="text" name="count_juice" id="count_juice" value="{{ $juices->count() }}"
+                                        hidden>
                                     <input type="text" class="form-control" id="nombre" name="nombre"
                                         placeholder="Nombre del producto">
                                     {{-- alerta de error --}}
@@ -73,7 +74,7 @@
 
 
                                 <div class="my-2">
-                                    <input type="submit" name="btn-guardar" value="Enviar" class="btn btn-success w-100">
+                                    <input type="submit" name="btn-guardar" value="Guardar" class="btn btn-success w-100">
                                 </div>
                             </form>
                         </div>
@@ -83,7 +84,7 @@
 
                 <div class="col-md-6 mt-5">
                     <div class="card">
-                        <div class="card-header bg-dark text-white">All Juices</div>
+                        <div class="card-header bg-dark text-white">Lista de Jugos</div>
                         {{-- AQUI SE VAN A CARGAR LOS DATOS CON VIA AJAX --}}
                         <div class="card-body" id="AllJuices">
                         </div>

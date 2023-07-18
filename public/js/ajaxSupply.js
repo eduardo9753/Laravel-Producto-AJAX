@@ -4,7 +4,7 @@ $(function () {
     if(count_supply >= 1){ setInterval(contador,1000); }
     function contador(){ fetchAllSupplies(); console.log('desde supply:'+count_supply);}
 
-    //GUARDAR DATOS VIA AJAX FORMULARIO
+    /*GUARDAR DATOS VIA AJAX FORMULARIO*/
     $('#form-supply').on('submit', function (e) {
         e.preventDefault(); //PARA RETENER EL RECARGE DE LA PAGINA
         //variable del formulario

@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-md-6 mt-5">
                     <div class="card">
-                        <div class="card-header bg-dark text-white">Add new Category</div>
+                        <div class="card-header bg-dark text-white">Agregar nueva Categoria</div>
                         <div class="card-body">
                             <form action="{{ route('category.save') }}" id="form-category" method="POST"
                                 enctype="application/x-www-form-urlencoded">
@@ -29,7 +29,7 @@
                                 </div>
 
                                 <div class="my-2">
-                                    <input type="submit" name="btn-guardar" value="Enviar" class="btn btn-success w-100">
+                                    <input type="submit" name="btn-guardar" value="Guardar" class="btn btn-success w-100">
                                 </div>
                             </form>
                         </div>
@@ -39,7 +39,7 @@
                
                 <div class="col-md-6 mt-5">
                     <div class="card">
-                        <div class="card-header bg-dark text-white">All Categories</div>
+                        <div class="card-header bg-dark text-white">LIsta de Categorias</div>
                         {{-- AQUI SE VAN A CARGAR LOS DATOS CON VIA AJAX --}}
                         <div class="card-body" id="AllCategories">
                         </div>

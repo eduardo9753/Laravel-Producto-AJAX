@@ -5,7 +5,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Supply</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Editar Suministros</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -60,12 +60,12 @@
 
 
                     <div class="my-2">
-                        <input type="submit" name="btn-guardar" value="Enviar" class="btn btn-success w-100">
+                        <input type="submit" name="btn-guardar" value="Actualizar" class="btn btn-success w-100">
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
