@@ -34,7 +34,7 @@
                                 <p class="precio">S/{{ $juice->precio }}</p>
                             </div>
                             <p class="informacion">{{ $juice->descripcion }}</p>
-                            <a href="https://wa.me/51952955205?text=Quisiera más información del producto - Nombre:{{ $juice->nombre }} - {{ $juice->precio }} - {{ $juice->descripcion }}"
+                            <a href="https://wa.me/51970852179?text=Quisiera más información del producto - Nombre:{{ $juice->nombre }} - {{ $juice->precio }} - {{ $juice->descripcion }}"
                                 target="_blank" class="boton">Pedir</a>
                         </div>
                     </div>
