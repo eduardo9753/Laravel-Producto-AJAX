@@ -19,7 +19,7 @@
 
                     <div class="form-group my-2">
                         <label for="nombre" class="my-2">Nombre</label>
-                        <input type="text" id="id_juice" name="id_juice">
+                        <input type="text" id="id_juice" name="id_juice" hidden>
                         <input type="text" class="form-control" id="nombre" name="nombre"
                             placeholder="Nombre del producto">
                         {{-- alerta de error --}}
