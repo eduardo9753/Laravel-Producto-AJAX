@@ -62,8 +62,8 @@
                                         <th scope="col">#</th>
                                         <th scope="col">egreso</th>
                                         <th scope="col">ingreso</th>
-                                        <th scope="col">final</th>
                                         <th scope="col">fecha</th>
+                                        <th scope="col">final</th>
                                         <th scope="col">Delete</th>
                                     </tr>
                                 </thead>
