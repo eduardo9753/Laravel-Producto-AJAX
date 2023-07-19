@@ -18,6 +18,12 @@
     <section class="" id="menu-productos">
         <div class="contenedor">
 
+            <div>
+                @foreach ($types as $type)
+                    <span class="pr-2">{{ $type->nombre }}</span>
+                @endforeach
+
+            </div>
             <div class="menu-productos-grilla">
                 @foreach ($juices as $juice)
                     <div class="menu-productos-caja">
@@ -29,7 +35,8 @@
                                 <p class="precio">S/{{ $juice->precio }}</p>
                             </div>
                             <p class="informacion">{{ $juice->descripcion }}</p>
-                            <a href="https://wa.me/51952955205?text=Quisiera más información del producto - Nombre:{{ $juice->nombre }} - {{ $juice->precio }} - {{ $juice->descripcion }}" target="_blank" class="boton">Pedir</a>
+                            <a href="https://wa.me/51952955205?text=Quisiera más información del producto - Nombre:{{ $juice->nombre }} - {{ $juice->precio }} - {{ $juice->descripcion }}"
+                                target="_blank" class="boton">Pedir</a>
                         </div>
                     </div>
                 @endforeach
@@ -41,5 +48,5 @@
 
 
 @section('footer')
-   @include('template.footer')
+    @include('template.footer')
 @endsection
