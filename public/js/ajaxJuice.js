@@ -65,7 +65,7 @@ $(function () {
             $(edit_juice_modal).find('#edit-juice-form').find('#id_juice').val(data.result.id);
             $(edit_juice_modal).find('#edit-juice-form').find('#nombre').val(data.result.nombre);
             $(edit_juice_modal).find('#edit-juice-form').find('#precio').val(data.result.precio);
-            $(edit_juice_modal).find('#edit-juice-form').find('.img-old').attr('src', '/storage/files/' + data.result.imagen);
+            $(edit_juice_modal).find('#edit-juice-form').find('.img-old').attr('src', '/productos/' + data.result.imagen);
             $(edit_juice_modal).find('#edit-juice-form').find('#descripcion').val(data.result.descripcion);
             //mostrando el modal
             $(edit_juice_modal).modal('show');
