@@ -38,7 +38,7 @@
 
                             <!-- Register buttons -->
                             <div class="text-center">
-                                <p>Ingresar <a href="{{ route('login.index') }}">Login</a></p>
+                                <p>Ingresar <a href="{{ route('login') }}">Login</a></p>
                             </div>
                         </form>
                     </div>
