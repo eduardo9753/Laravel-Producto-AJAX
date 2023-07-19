@@ -20,7 +20,7 @@
 
             <div class="d-flex justify-content-center">
                 @foreach ($types as $type)
-                    <div class=""><a href="{{ route('menu.show', ['id' => $type->id]) }}">{{ $type->nombre }}</a></span>
+                    <div class=""><a href="{{ route('menu.show', ['id' => $type->id]) }}">{{ $type->nombre }}</a></div>
                 @endforeach
             </div>
             <div class="menu-productos-grilla">
