@@ -55,7 +55,7 @@ class JuiceController extends Controller
             $imagenServidor = Image::make($imagen); //CREANDO LA IMAGEN CON Intervation
             $imagenServidor->fit(400, 400);       //DANDOLE TAMAÑO UNICO
 
-            $imagenPath = public_path('storage/files') . "/" . $nombreImagen; //DIRECCIONANDO A LA RUTA
+            $imagenPath = public_path('productos') . "/" . $nombreImagen; //DIRECCIONANDO A LA RUTA
             $upload = $imagenServidor->save($imagenPath);      //GUARDANDO IMAGEN
 
             if ($upload) {
@@ -133,13 +133,13 @@ class JuiceController extends Controller
                 $imagenServidor = Image::make($imagen); //CREANDO LA IMAGEN CON Intervation
                 $imagenServidor->fit(1000, 1000);       //DANDOLE TAMAÑO UNICO
 
-                $imagenPath = public_path('storage/files') . "/" . $nombreImagen; //DIRECCIONANDO A LA RUTA
+                $imagenPath = public_path('productos') . "/" . $nombreImagen; //DIRECCIONANDO A LA RUTA
                 $upload = $imagenServidor->save($imagenPath);      //GUARDANDO IMAGEN
 
                 if ($upload) {
                     //eliminamos la imagen antigua si es que existe
                     if ($juice->imagen) {
-                        $path_delete = public_path('storage/files/' . $juice->imagen);
+                        $path_delete = public_path('productos/' . $juice->imagen);
                         if (File::exists($path_delete)) {
                             unlink($path_delete);
                         }
@@ -168,7 +168,7 @@ class JuiceController extends Controller
     {
         $juice = Juice::find($request->juice_id);
         if ($juice->imagen) {
-            $path_delete = public_path('storage/files/' . $juice->imagen);
+            $path_delete = public_path('productos/' . $juice->imagen);
             if (File::exists($path_delete)) {
                 unlink($path_delete);
             }

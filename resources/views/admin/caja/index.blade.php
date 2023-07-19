@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-md-6 mt-5">
                     <div class="card">
-                        <div class="card-header bg-dark text-white">Agregar cAJA</div>
+                        <div class="card-header bg-dark text-white">Agregar Caja</div>
                         <div class="card-body">
                             <form action="{{ route('caja.save') }}" id="form-caja" method="POST"
                                 enctype="application/x-www-form-urlencoded">
