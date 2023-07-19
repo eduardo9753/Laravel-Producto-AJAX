@@ -21,7 +21,7 @@
             <div class="menu-productos-grilla">
                 @foreach ($juices as $juice)
                     <div class="menu-productos-caja">
-                        <img src="{{ asset('perfiles/' . $juice->imagen) }}" alt="{{ $juice->imagen }}" class="">
+                        <img src="{{ asset('productos/' . $juice->imagen) }}" alt="{{ $juice->imagen }}" class="">
 
                         <div class="menu-productos-descripcion">
                             <div class="menu-productos-flex">

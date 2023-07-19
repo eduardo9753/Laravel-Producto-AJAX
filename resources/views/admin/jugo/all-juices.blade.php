@@ -3,7 +3,7 @@
         @foreach ($juices as $juice)
             <div class="col-md-4">
                 <div class="media mb-4">
-                    <img src="/storage/files/{{ $juice->imagen }}" alt="{{ $juice->imagen }}"
+                    <img src="{{ asset('productos/' . $juice->imagen) }}" alt="{{ $juice->imagen }}"
                         class="d-flex align-self-lg-start rounded mr-3 img-tamanio">
 
                     <div class="media-body">
