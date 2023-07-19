@@ -18,11 +18,10 @@
     <section class="" id="menu-productos">
         <div class="contenedor">
 
-            <div class="">
+            <div class="d-flex justify-content-center">
                 @foreach ($types as $type)
-                    <span class="d-flex justify-content-center"><a href="{{ route('menu.show', ['id' => $type->id]) }}">{{ $type->nombre }}</a></span>
+                    <div class=""><a href="{{ route('menu.show', ['id' => $type->id]) }}">{{ $type->nombre }}</a></span>
                 @endforeach
-
             </div>
             <div class="menu-productos-grilla">
                 @foreach ($juices as $juice)
