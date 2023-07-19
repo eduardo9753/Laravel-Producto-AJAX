@@ -17,7 +17,7 @@
                     <a class="nav-link" href="{{ route('category.index') }}">Categorias</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('provider.index') }}">Proovedores</a>
+                    <a class="nav-link" href="{{ route('provider.index') }}">Proveedores</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('juice.index') }}">Jugos</a>
