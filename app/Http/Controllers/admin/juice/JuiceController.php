@@ -109,7 +109,7 @@ class JuiceController extends Controller
             )
             ->where('juices.id', '=', $id)
             ->first(); //CUANDO SON TABLAS UNIDAS PODER ESTE COMANDO 
-                       //PARA QUE AJAX RECONOZCA LOS DATOS A LEER
+        //PARA QUE AJAX RECONOZCA LOS DATOS A LEER
 
         return response()->json([
             'code' => 1,

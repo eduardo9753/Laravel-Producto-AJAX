@@ -66,7 +66,7 @@ $(function () {
             $(edit_juice_modal).find('#edit-juice-form').find('#nombre').val(data.result.nombre);
             $(edit_juice_modal).find('#edit-juice-form').find('#precio').val(data.result.precio);
             //se agregar el tipo del producto y debajo se recorre el select
-            //$(edit_juice_modal).find('#edit-juice-form').find('#type_id').append("<option value='"+data.result.type_id+"'>"+data.result.nombre_tipo+"</option>");
+            $(edit_juice_modal).find('#edit-juice-form').find('#type_id').append("<option value='"+data.result.type_id+"'>"+data.result.nombre_tipo+"</option>");
             $(edit_juice_modal).find('#edit-juice-form').find('.img-old').attr('src', '/productos/' + data.result.imagen);
             $(edit_juice_modal).find('#edit-juice-form').find('#descripcion').val(data.result.descripcion);
             //mostrando el modal
@@ -106,6 +106,7 @@ $(function () {
                 } else {
                     alert(data.msg);
                     fetchAllJuices();//recargarmos los datos de la tabla
+                    $(form)[0].reset(); //reseteamos los datos en el formulario
                     $('#edit-juice-modal').modal('hide'); //escondemos el modal
                 }
             }

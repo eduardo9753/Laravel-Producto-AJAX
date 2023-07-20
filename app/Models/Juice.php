@@ -16,6 +16,6 @@ class Juice extends Model
         'precio',
         'descripcion',
         'user_id',
-        'category_id'
+        'type_id'
     ];
 }
