@@ -54,6 +54,12 @@
     object-fit: cover;
 }
 
+#menu-productos .grid-item {
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-gap: 20px;
+}
+
 #menu-productos .menu-productos-descripcion { padding: 20px;}
 #menu-productos .menu-productos-descripcion .precio { color: var(--verde); font-weight: bold; font-size: 20px;}
 #menu-productos .menu-productos-descripcion .informacion { border-top: 2px solid var(--verde); padding-top: 20px; padding-bottom: 20px; text-align: justify;}
