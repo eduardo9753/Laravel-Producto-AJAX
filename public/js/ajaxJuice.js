@@ -106,6 +106,7 @@ $(function () {
                 } else {
                     alert(data.msg);
                     fetchAllJuices();//recargarmos los datos de la tabla
+                    $(form)[0].reset(); //reseteamos los datos en el formulario
                     $('#edit-juice-modal').modal('hide'); //escondemos el modal
                 }
             }
