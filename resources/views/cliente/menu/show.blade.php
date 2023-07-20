@@ -20,7 +20,7 @@
 
             <div class="d-flex justify-content-around">
                 @foreach ($types as $type)
-                    <div class="pr-3 pt-3"><a href="{{ route('menu.show', ['id' => $type->id]) }}">{{ $type->nombre }}</a>
+                    <div class="px-3 pt-3"><a href="{{ route('menu.show', ['id' => $type->id]) }}">{{ $type->nombre }}</a>
                     </div>
                 @endforeach
             </div>
