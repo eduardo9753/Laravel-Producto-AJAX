@@ -20,7 +20,8 @@
 
             <div class="d-flex justify-content-around">
                 @foreach ($types as $type)
-                    <div class="pr-3 pt-3"><a href="{{ route('menu.show', ['id' => $type->id]) }}">{{ $type->nombre }}</a></div>
+                    <div class="pr-3 pt-3"><a href="{{ route('menu.show', ['id' => $type->id]) }}">{{ $type->nombre }}</a>
+                    </div>
                 @endforeach
             </div>
             <div class="menu-productos-grilla">
@@ -34,7 +35,7 @@
                                 <p class="precio">S/{{ $juice->precio }}</p>
                             </div>
                             <p class="informacion">{{ $juice->descripcion }}</p>
-                            <a href="https://wa.me/51970852179?text=Quisiera más información del producto - Nombre:{{ $juice->nombre }} - {{ $juice->precio }} - {{ $juice->descripcion }}"
+                            <a href="https://wa.me/51966990328?text=Quisiera más información del producto - Nombre:{{ $juice->nombre }} - Precio: {{ $juice->precio }} - Descripcion: {{ $juice->descripcion }}"
                                 target="_blank" class="boton">Pedir</a>
                         </div>
                     </div>

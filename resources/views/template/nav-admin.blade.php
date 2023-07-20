@@ -26,6 +26,9 @@
                     <a class="nav-link" href="{{ route('caja.index') }}">Caja</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('tipo.index') }}">Tipos</a>
+                </li>
+                <li class="nav-item">
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <input type="submit" class="btn-salir" value="Salir">

@@ -60,11 +60,13 @@ $(function () {
         var url = '/juice/show/' + juice_id + '';
         //pasamos los datos por ajax
         $.get(url, {}, function (data) {
-            //alert(data.result.product_name);
+            console.log(data.result);
             var edit_juice_modal = $('#edit-juice-modal');
             $(edit_juice_modal).find('#edit-juice-form').find('#id_juice').val(data.result.id);
             $(edit_juice_modal).find('#edit-juice-form').find('#nombre').val(data.result.nombre);
             $(edit_juice_modal).find('#edit-juice-form').find('#precio').val(data.result.precio);
+            //se agregar el tipo del producto y debajo se recorre el select
+            $(edit_juice_modal).find('#edit-juice-form').find('#type_id').append("<option value='"+data.result.type_id+"'>"+data.result.nombre_tipo+"</option>");
             $(edit_juice_modal).find('#edit-juice-form').find('.img-old').attr('src', '/productos/' + data.result.imagen);
             $(edit_juice_modal).find('#edit-juice-form').find('#descripcion').val(data.result.descripcion);
             //mostrando el modal

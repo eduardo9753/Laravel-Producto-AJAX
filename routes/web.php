@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\juice\JuiceController;
 use App\Http\Controllers\admin\provider\ProviderController;
 use App\Http\Controllers\admin\supply\SupplyController;
 use App\Http\Controllers\admin\HomeController;
+use App\Http\Controllers\admin\type\TypeController;
 use App\Http\Controllers\cliente\ContactoControllerCliente;
 use App\Http\Controllers\cliente\HomeControllerCliente;
 use App\Http\Controllers\cliente\MenuControllerCliente;
@@ -57,6 +58,15 @@ Route::post('/mail/store', [MailController::class, 'store'])->name('mail.store')
 Route::get('/caja', [CajaController::class, 'index'])->name('caja.index');
 Route::post('/caja/save', [CajaController::class, 'save'])->name('caja.save');
 Route::delete('/caja/save', [CajaController::class, 'delete'])->name('caja.delete');
+
+
+//TIPO PRODUCTO
+Route::get('/tipo', [TypeController::class, 'index'])->name('tipo.index');
+Route::post('/tipo/save', [TypeController::class, 'save'])->name('tipo.save');
+Route::get('/tipo/show/{id}', [TypeController::class, 'show'])->name('tipo.show');
+Route::put('/tipo/update', [TypeController::class, 'update'])->name('tipo.update');
+Route::delete('/tipo/delete', [TypeController::class, 'delete'])->name('tipo.delete');
+
 
 
 //AJAX PROUCTO

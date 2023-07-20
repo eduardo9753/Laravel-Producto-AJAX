@@ -67,6 +67,7 @@
 
     <!--FILES JS-->
     <script src="{{ asset('js/ajaxJuice.js') }}"></script>
+    <script src="{{ asset('js/ajaxType.js') }}"></script>
     <script src="{{ asset('js/ajaxSupply.js') }}"></script>
     <script src="{{ asset('js/ajaxCategory.js') }}"></script>
     <script src="{{ asset('js/ajaxProovedor.js') }}"></script>

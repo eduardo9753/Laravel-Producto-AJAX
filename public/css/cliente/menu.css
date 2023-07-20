@@ -24,9 +24,10 @@
 
 #menu h3 { color: var(--blanco); font-size: 50px;}
 
-#menu .imagen-jugo { background-image:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.3)), url(../../img/empresa/menu-jugos.jpg);}
-#menu .imagen-pastel { background-image:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.3)), url(../../img/empresa/menu-pasteles.jpg);}
-#menu .imagen-sandwich { background-image:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.3)), url(../../img/empresa/menu-sandwich.jpg);}
+#menu .imagen-jugo-personal { background-image:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.3)), url(../../img/empresa/menu-jugos-personal.jpg);}
+#menu .imagen-jugo-jarra { background-image:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.3)), url(../../img/empresa/menu-jugos-jarra.jpg);}
+#menu .imagen-pastel-dulce { background-image:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.3)), url(../../img/empresa/menu-pasteles-dulces.jpg);}
+#menu .imagen-pastel-salado { background-image:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.3)), url(../../img/empresa/menu-pasteles-salados.jpg);}
 #menu .imagen-promocion { background-image:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.3)), url(../../img/empresa/menu-promociones.jpg);}
 
 

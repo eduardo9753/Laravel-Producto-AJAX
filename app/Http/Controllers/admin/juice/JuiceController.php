@@ -95,7 +95,22 @@ class JuiceController extends Controller
     //TRAENDO DATOS DEL JUGO POR ID
     public function show($id)
     {
-        $juices = Juice::find($id);
+        //$juices = Juice::find($id);
+        $juices = Juice::join('types', 'types.id', '=', 'juices.type_id')
+            ->select(
+                'juices.nombre',
+                'juices.imagen',
+                'juices.precio',
+                'juices.descripcion',
+                'juices.user_id',
+                'juices.type_id',
+                'juices.id',
+                'types.nombre as nombre_tipo'
+            )
+            ->where('juices.id', '=', $id)
+            ->first(); //CUANDO SON TABLAS UNIDAS PODER ESTE COMANDO 
+                       //PARA QUE AJAX RECONOZCA LOS DATOS A LEER
+
         return response()->json([
             'code' => 1,
             'result' => $juices
