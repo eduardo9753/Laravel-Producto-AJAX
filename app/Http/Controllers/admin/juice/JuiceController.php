@@ -35,6 +35,10 @@ class JuiceController extends Controller
     //GUARDAR LOS DATOS DEL FORMULARIO
     public function save(Request $request)
     {
+        $count = Juice::all()->count();
+        if ($count >= 1) {
+            return redirect()->route('juice.index');
+        }
         $validator = Validator::make($request->all(), [
             'nombre'  => 'required|string|unique:juices',
             'imagen' => 'required|image',
