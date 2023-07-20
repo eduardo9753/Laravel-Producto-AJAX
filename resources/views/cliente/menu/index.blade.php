@@ -25,25 +25,25 @@
                 </div>
             </a>
 
-            <a href="{{ route('menu.show', ['id'=>1]) }}">
+            <a href="{{ route('menu.show', ['id'=>2]) }}">
                 <div class="menu-fondo imagen-jugo-jarra centrar-div">
                     <h3>jugos-Jarra</h3>
                 </div>
             </a>
 
-            <a href="{{ route('menu.show', ['id'=>2]) }}">
+            <a href="{{ route('menu.show', ['id'=>3]) }}">
                 <div class="menu-fondo imagen-pastel-dulce centrar-div">
                     <h3>pasteles-dulces</h3>
                 </div>
             </a>
 
-            <a href="{{ route('menu.show', ['id'=>3]) }}">
+            <a href="{{ route('menu.show', ['id'=>4]) }}">
                 <div class="menu-fondo imagen-pastel-salado centrar-div">
                     <h3>pasteles-salados</h3>
                 </div>
             </a>
 
-            <a href="{{ route('menu.show', ['id'=>4]) }}">
+            <a href="{{ route('menu.show', ['id'=>5]) }}">
                 <div class="menu-fondo imagen-promocion centrar-div">
                     <h3>promociones</h3>
                 </div>
