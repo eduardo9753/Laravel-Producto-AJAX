@@ -4,6 +4,8 @@ Crud de Imagenes con el Framework Laravel - AJAX para metodos asincronos .
 
 Construida en laravel 8, bootstrap CSS y Base de Datos MySql 
 
+- [Visita Nuestra Pagina - Frutimanía](https://frutimania.familc.com/).
+
 HERRAMIENTAS :
 - Base de Datos: MySQL.
 - Estilos: CSS3 y bootstrap CSS.
