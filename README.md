@@ -1,4 +1,4 @@
-# CRUD - LARAVEL - AJAX
+# FRUTIMANÍA - juguería y sanguchería
 
 Crud de Imagenes con el Framework Laravel - AJAX para metodos asincronos .
 
