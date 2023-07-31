@@ -12,7 +12,10 @@ class MenuControllerCliente extends Controller
     //INDEX MENU
     public function index()
     {
-        return view('cliente.menu.index');
+        $types = Type::all();
+        return view('cliente.menu.index', [
+            'types' => $types
+        ]);
     }
 
     public function show($id)

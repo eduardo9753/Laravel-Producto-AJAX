@@ -10,8 +10,9 @@
                         <h2 class="mt-0 font-16">{{ $juice->nombre }}</h2>
                         <div class="btn-group">
                             {{-- vinculamos el boton modal(juiceo.edit-juice-modal) con el fomulario de todos los juiceos --}}
-                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#edit-juice-modal"
-                                id="edit-juice-btn" data-id="{{ $juice->id }}">Edit</button>
+                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#edit-juice-modal" id="edit-juice-btn"
+                                data-id="{{ $juice->id }}">Edit</button>
 
                             <button class="btn btn-sm btn-danger" id="delete-juice-btn"
                                 data-id="{{ $juice->id }}">Delete</button>

@@ -36,9 +36,7 @@ class JuiceController extends Controller
     public function save(Request $request)
     {
         $count = Juice::all()->count();
-        if ($count >= 1) {
-            return redirect()->route('juice.index');
-        }
+        //if ($count >= 1) { return; }
         $validator = Validator::make($request->all(), [
             'nombre'  => 'required|string|unique:juices',
             'imagen' => 'required|image',
