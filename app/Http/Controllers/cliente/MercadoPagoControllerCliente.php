@@ -86,21 +86,7 @@ class MercadoPagoControllerCliente extends Controller
     //OBS: PARA ACCEDER A LOS PAGOS REALES, UTILIZA LAS LLAVES DE PRDUCCION DE TU CUENTA DE PRUEBA
     public function success(Request $request)
     {
-        //puedes registrarlo en la base de datos
-        if ($request->status === 'approved') {
-            $save = Pay::create([
-                'status' => $request->status,
-                'pago_id' => $request->payment_id, //con esta id se puede gestionar los datos en mercado pago
-                'tipo_pago' => 'Producto Pago - ' . $request->payment_type
-            ]);
-
-            if ($save) {
-                return redirect()->route('inicio.index')->with('pay', 'Se realizó el pago correctamente');
-            } else {
-                return redirect()->route('inicio.index')->with('nopay', 'No se realizó el pago correctamente');
-            }
-        }
-        //else para las demos estados 
+        dd($request->getContent());
     }
 
     public function failure()
