@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\provider\ProviderController;
 use App\Http\Controllers\admin\supply\SupplyController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\mercadopago\MercadoPagoController;
+use App\Http\Controllers\admin\mercadopago\MercadoPagoWebHookController;
 use App\Http\Controllers\admin\type\TypeController;
 use App\Http\Controllers\cliente\ContactoControllerCliente;
 use App\Http\Controllers\cliente\HomeControllerCliente;
@@ -52,11 +53,10 @@ Route::get('/stripe/cancel', [StripeControllerCliente::class, 'cancel'])->name('
 //pagos con mercadopago cliente productos
 Route::get('/mercadopago', [MercadoPagoControllerCliente::class, 'index'])->name('mercadopago.index');
 Route::post('/mercadopago/pay', [MercadoPagoControllerCliente::class, 'pay'])->name('mercadopago.pay');
-//webHook de mercadopago
-Route::post('/mercadopago/success', [MercadoPagoControllerCliente::class, 'success'])->name('mercadopago.success');
+Route::get('/mercadopago/success', [MercadoPagoControllerCliente::class, 'success'])->name('mercadopago.success');
 Route::get('/mercadopago/failure', [MercadoPagoControllerCliente::class, 'failure'])->name('mercadopago.failure');
 Route::get('/mercadopago/pending', [MercadoPagoControllerCliente::class, 'pending'])->name('mercadopago.pending');
-Route::get('/mercadopago/cancelar/comprar',[MercadoPagoControllerCliente::class ,'cancel'])->name('mercadopago.cancel');
+Route::get('/mercadopago/cancelar/comprar', [MercadoPagoControllerCliente::class, 'cancel'])->name('mercadopago.cancel');
 
 
 
@@ -145,4 +145,5 @@ Route::post('/mercadopago/reembolso/{paymentId}', [MercadoPagoController::class,
 
 
 
-
+//webHook de mercadopago admin
+Route::post('/mercadopago/webhook', [MercadoPagoWebHookController::class, 'handleWebhook'])->name('admin.mercadopago.webhook');
