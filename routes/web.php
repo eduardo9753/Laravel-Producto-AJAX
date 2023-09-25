@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\provider\ProviderController;
 use App\Http\Controllers\admin\supply\SupplyController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\mercadopago\MercadoPagoController;
+use App\Http\Controllers\admin\mercadopago\MercadoPagoSuscripcionController;
 use App\Http\Controllers\admin\mercadopago\MercadoPagoWebHookController;
 use App\Http\Controllers\admin\type\TypeController;
 use App\Http\Controllers\cliente\ContactoControllerCliente;
@@ -70,6 +71,8 @@ Route::post('/mercadopago/suscription/pay', [MercadoPagoSuscripcionControllerCli
 Route::get('/mercadopago/suscription/success', [MercadoPagoSuscripcionControllerCliente::class, 'success'])->name('mercadopago.suscription.success');
 Route::get('/mercadopago/suscription/failure', [MercadoPagoSuscripcionControllerCliente::class, 'failure'])->name('mercadopago.suscription.failure');
 Route::get('/mercadopago/suscription/pending', [MercadoPagoSuscripcionControllerCliente::class, 'pending'])->name('mercadopago.suscription.pending');
+
+
 
 
 
@@ -148,3 +151,4 @@ Route::get('/mercadopago/list/pay', [MercadoPagoController::class, 'index'])->na
 Route::post('/mercadopago/reembolso/{paymentId}', [MercadoPagoController::class, 'reembolso'])->name('admin.mercadopago.reembolso');
 
 
+Route::get('/mercadopago/suscription/cancel', [MercadoPagoSuscripcionController::class, 'cancel'])->name('admin.mercadopago.cancel.index');
