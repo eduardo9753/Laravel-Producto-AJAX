@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class MercadoPagoWebHookController extends Controller
 {
-    public function handleWebhook(Request $request)
+    public function index(Request $request)
     {
         // Obtén el contenido de la solicitud (JSON del webhook)
         $payload = $request->getContent();

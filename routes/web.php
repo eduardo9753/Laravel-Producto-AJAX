@@ -146,4 +146,4 @@ Route::post('/mercadopago/reembolso/{paymentId}', [MercadoPagoController::class,
 
 
 //webHook de mercadopago admin
-Route::post('/mercadopago/webhook', [MercadoPagoWebHookController::class, 'handleWebhook'])->name('admin.mercadopago.webhook');
+Route::post('/mercadopago/webhook', [MercadoPagoWebHookController::class, 'index'])->name('admin.mercadopago.webhook');
