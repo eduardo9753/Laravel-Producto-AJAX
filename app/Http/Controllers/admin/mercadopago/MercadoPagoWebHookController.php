@@ -9,11 +9,11 @@ class MercadoPagoWebHookController extends Controller
 {
     public function index(Request $request)
     {
-        // Obtén el contenido de la solicitud (JSON del webhook)
+        /* Obtén el contenido de la solicitud (JSON del webhook)
         $payload = $request->getContent();
         dd($payload);
 
-        /* Obten la firma HMAC enviada por MercadoPago
+         Obten la firma HMAC enviada por MercadoPago
         $signature = $request->header('x-signature');
 
         // Verifica la firma HMAC

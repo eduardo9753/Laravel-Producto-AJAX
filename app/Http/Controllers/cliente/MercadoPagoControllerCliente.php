@@ -80,10 +80,9 @@ class MercadoPagoControllerCliente extends Controller
         }
     }
 
-    //una vez pagado, el weehook mandara una notificacion 
-    //con los datos a esta ruta para para poder el siguiente flujo 
-    //PODRIAS CREAR UN WEBHOOK GENERAL QUE ES ESTE Y GUARDAR LOS DATOS SEGUNDA TIPO DE PAGO "pago o suscripcion"
-    //OBS: PARA ACCEDER A LOS PAGOS REALES, UTILIZA LAS LLAVES DE PRDUCCION DE TU CUENTA DE PRUEBA
+    
+    //cuando el cliente le de click al boton "Volver al sitio" 
+    //guardaremos los datos de la comprar
     public function success(Request $request)
     {
         //puedes registrarlo en la base de datos
@@ -91,7 +90,7 @@ class MercadoPagoControllerCliente extends Controller
             $save = Pay::create([
                 'status' => $request->status,
                 'pago_id' => $request->payment_id, //con esta id se puede gestionar los datos en mercado pago
-                'tipo_pago' => 'Producto Pago - ' . $request->payment_type
+                'tipo_pago' => 'Producto',//$request->payment_type
             ]);
 
             if ($save) {

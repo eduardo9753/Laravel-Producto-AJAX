@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\admin\mercadopago;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pay;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use MercadoPago\SDK;
+use MercadoPago\Payment;
 use MercadoPago\Subscription;
 
 class MercadoPagoSuscripcionController extends Controller
@@ -12,25 +15,7 @@ class MercadoPagoSuscripcionController extends Controller
     //vista de los pagos de suscripcion generados por mercadopago
     public function index()
     {
-        return view('admin.mercadopago.index');
-    }
-
-    public function cancel()
-    {
-        SDK::setAccessToken(config('services.mercadopago.access_token'));
-
-        $subscriptionId = '64207302170';
-        $subscription = Subscription::find_by_id($subscriptionId);
-
-        $subscription->cancel();
-
-        if ($subscription->status == 'cancelled') {
-            // La suscripción se canceló correctamente
-            echo "cancelado";
-        } else {
-            // Hubo un error al cancelar la suscripción
-            // Maneja el error adecuadamente
-            echo "no cancelado";
-        }
+        $payments = Pay::where('tipo_pago', '=', 'Suscripcion')->get();
+        return view('admin.mercadopago.list', ['payments' => $payments]);
     }
 }

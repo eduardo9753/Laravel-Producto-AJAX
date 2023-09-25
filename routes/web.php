@@ -73,6 +73,9 @@ Route::get('/mercadopago/suscription/failure', [MercadoPagoSuscripcionController
 Route::get('/mercadopago/suscription/pending', [MercadoPagoSuscripcionControllerCliente::class, 'pending'])->name('mercadopago.suscription.pending');
 
 
+//lista de pagos mercadopago admin - productos - suscripciones
+Route::get('/mercadopago/list/pay', [MercadoPagoController::class, 'index'])->name('admin.mercadopago.index');
+Route::get('/mercadopago/list/suscription', [MercadoPagoSuscripcionController::class, 'index'])->name('admin.mercadopago.suscription.index');
 
 
 
@@ -146,9 +149,3 @@ Route::put('/category/update', [CategoryController::class, 'update'])->name('cat
 Route::post('/category/delete', [CategoryController::class, 'delete'])->name('category.delete');
 
 
-//pagos mercadopago admin
-Route::get('/mercadopago/list/pay', [MercadoPagoController::class, 'index'])->name('admin.mercadopago.index');
-Route::post('/mercadopago/reembolso/{paymentId}', [MercadoPagoController::class, 'reembolso'])->name('admin.mercadopago.reembolso');
-
-
-Route::get('/mercadopago/suscription/cancel', [MercadoPagoSuscripcionController::class, 'cancel'])->name('admin.mercadopago.cancel.index');
