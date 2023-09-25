@@ -11,8 +11,9 @@ class MercadoPagoWebHookController extends Controller
     {
         // Obtén el contenido de la solicitud (JSON del webhook)
         $payload = $request->getContent();
+        dd($payload);
 
-        // Obten la firma HMAC enviada por MercadoPago
+        /* Obten la firma HMAC enviada por MercadoPago
         $signature = $request->header('x-signature');
 
         // Verifica la firma HMAC
@@ -32,6 +33,6 @@ class MercadoPagoWebHookController extends Controller
         } else {
             // La firma no es válida, ignora la notificación o maneja el error
             return response()->json(['message' => 'Invalid webhook request'], 400);
-        }
+        }*/
     }
 }
