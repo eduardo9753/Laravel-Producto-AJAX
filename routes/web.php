@@ -52,7 +52,8 @@ Route::get('/stripe/cancel', [StripeControllerCliente::class, 'cancel'])->name('
 //pagos con mercadopago cliente productos
 Route::get('/mercadopago', [MercadoPagoControllerCliente::class, 'index'])->name('mercadopago.index');
 Route::post('/mercadopago/pay', [MercadoPagoControllerCliente::class, 'pay'])->name('mercadopago.pay');
-Route::get('/mercadopago/success', [MercadoPagoControllerCliente::class, 'success'])->name('mercadopago.success');
+//webHook de mercadopago
+Route::post('/mercadopago/success', [MercadoPagoControllerCliente::class, 'success'])->name('mercadopago.success');
 Route::get('/mercadopago/failure', [MercadoPagoControllerCliente::class, 'failure'])->name('mercadopago.failure');
 Route::get('/mercadopago/pending', [MercadoPagoControllerCliente::class, 'pending'])->name('mercadopago.pending');
 Route::get('/mercadopago/cancelar/comprar',[MercadoPagoControllerCliente::class ,'cancel'])->name('mercadopago.cancel');

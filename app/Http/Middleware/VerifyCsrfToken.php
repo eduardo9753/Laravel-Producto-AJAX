@@ -14,6 +14,6 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         //
         '/mercadopago/success',
-        '/mercadopago/suscription/success'
+        '/mercadopago/suscription/success',
     ];
 }
