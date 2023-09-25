@@ -20,6 +20,22 @@
 @section('main')
     <section class="" id="descripcion">
         <div class="contenedor">
+            {{-- MENSAJE EL PAGO FUE CORRECTO --}}
+            @if (session('pay'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Obs:</strong> {{ session('pay') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+            {{-- MENSAJE EL PAGO FUE CORRECTO --}}
+            @if (session('nopay'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Obs:</strong> {{ session('nopay') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
             <div class="descripcion-flex">
                 <img class="descripcion-imagen" src="{{ asset('img/logo/logo.jpeg') }}" alt="">
 

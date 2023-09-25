@@ -29,6 +29,9 @@
                     <a class="nav-link" href="{{ route('tipo.index') }}">Tipos</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.mercadopago.index') }}">Pagos</a>
+                </li>
+                <li class="nav-item">
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <input type="submit" class="btn-salir" value="Salir">

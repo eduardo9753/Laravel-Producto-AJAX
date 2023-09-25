@@ -11,7 +11,9 @@
         "intervention/image": "^2.7",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "mercadopago/dx-php": "^2.6",
+        "stripe/stripe-php": "^12.3"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

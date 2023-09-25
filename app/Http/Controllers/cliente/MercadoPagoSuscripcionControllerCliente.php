@@ -1,0 +1,108 @@
+<?php
+
+namespace App\Http\Controllers\cliente;
+
+use App\Http\Controllers\Controller;
+use App\Models\Pay;
+use Illuminate\Http\Request;
+use MercadoPago\SDK;
+use MercadoPago\Preference;
+
+
+
+class MercadoPagoSuscripcionControllerCliente extends Controller
+{
+    public function __construct()
+    {
+    }
+
+    //
+    public function index()
+    {
+        return view('cliente.mercadopago.suscripcion');
+    }
+
+    //AQUI VIENE LA INFORMACION PARA PREPARAR EL PAGO CON MERCADOPAGO
+    //DE ALLI DEBEMOS DEVOLVER EL "preference_id" PARA PODER ACCEDER 
+    //AL BOTON DE PAGO Y CONTINUAR CON EL COBRO 
+    public function pay()
+    {
+
+        // Configura las credenciales de Mercado Pago
+        SDK::setAccessToken(config('mercadopago.token'));
+
+        // Crea un objeto de preferencia de suscripción
+        $preference = new Preference();
+
+        // Configura los detalles de la suscripción
+        $preference->items = [
+            [
+                'title' => 'Suscripción Mensual',
+                'quantity' => 1,
+                'unit_price' => 19.90, // Precio mensual
+            ]
+        ];
+
+        // esta suscripcion lo cree en mercadopago
+        $preference->subscription_plan_id = '2c9380848ab2cb05018aba814d4c05a0'; // lo cree en la cuenta de mercadopago en la seccion de "Planes de Suscripciones"
+
+
+        $preference->back_urls = [
+            'success' => route('mercadopago.suscription.success'),
+            'failure' => route('mercadopago.suscription.failure'),
+            'pending' => route('mercadopago.suscription.pending'),
+        ];
+        $preference->auto_return = 'approved'; // Redirige automáticamente al usuario después de un pago aprobado
+
+
+        // Guarda la preferencia
+        $save = $preference->save();
+
+        // Redirige al usuario al checkout de Mercado Pago para la suscripción
+        // IMPORTANTE CUANDO ES SUSCRIPCION YA NO SE ENVIA LA $preference->id. ESO SOLO SE PASA EN CUANDO SE COMPRA PRODUCTOS
+        if ($save) {
+            $dato = [
+                'init_point' =>  $preference->init_point
+            ];
+            return response()->json([
+                'code' => 1,
+                'msg' => $dato
+            ]);
+        } else {
+            return response()->json([
+                'code' => 0,
+                'msg' => 'Error de Datos'
+            ]);
+        }
+    }
+
+
+    public function success(Request $request)
+    {
+        //puedes registrarlo en la base de datos
+        if ($request->status === 'approved') {
+            $save = Pay::create([
+                'status' => $request->status,
+                'pago_id' => $request->payment_id, //con esta id se puede gestionar los datos en mercado pago
+                'tipo_pago' => 'Suscripcion pagada - ' . $request->payment_type
+            ]);
+
+            if ($save) {
+                return redirect()->route('inicio.index')->with('pay', 'Se realizó el pago correctamente');
+            } else {
+                return redirect()->route('inicio.index')->with('nopay', 'No se realizó el pago correctamente');
+            }
+        }
+        //else para las demos estados 
+    }
+
+    public function failure()
+    {
+        return "error de Suscripcion";
+    }
+
+    public function pending()
+    {
+        return "Suscripcion Pendiente";
+    }
+}
