@@ -57,7 +57,6 @@ Route::post('/mercadopago/pay', [MercadoPagoControllerCliente::class, 'pay'])->n
 Route::get('/mercadopago/success', [MercadoPagoControllerCliente::class, 'success'])->name('mercadopago.success');
 Route::get('/mercadopago/failure', [MercadoPagoControllerCliente::class, 'failure'])->name('mercadopago.failure');
 Route::get('/mercadopago/pending', [MercadoPagoControllerCliente::class, 'pending'])->name('mercadopago.pending');
-Route::post('/mercadopago/cancelar/compra', [MercadoPagoControllerCliente::class, 'cancel'])->name('mercadopago.cancel');
 
 
 //webHook de mercadopago para pagos y suscripciones
@@ -73,8 +72,10 @@ Route::get('/mercadopago/suscription/failure', [MercadoPagoSuscripcionController
 Route::get('/mercadopago/suscription/pending', [MercadoPagoSuscripcionControllerCliente::class, 'pending'])->name('mercadopago.suscription.pending');
 
 
-//lista de pagos mercadopago admin - productos - suscripciones
+
+//lista de pagos mercadopago admin - [productos-suscripciones-reembolsos]
 Route::get('/mercadopago/list/pay', [MercadoPagoController::class, 'index'])->name('admin.mercadopago.index');
+Route::post('/mercadopago/cancelar/compra', [MercadoPagoController::class, 'cancel'])->name('mercadopago.cancel');
 Route::get('/mercadopago/list/suscription', [MercadoPagoSuscripcionController::class, 'index'])->name('admin.mercadopago.suscription.index');
 
 
