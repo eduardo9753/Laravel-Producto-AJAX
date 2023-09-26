@@ -22,6 +22,7 @@
                                     <th scope="col">Codigo Pago</th>
                                     <th scope="col">Tipo Pago</th>
                                     <th scope="col">Fecha</th>
+                                    <th scope="col">Cancelar Suscripcion</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,6 +33,13 @@
                                         <td>{{ $pay->pago_id }}</td>
                                         <td>{{ $pay->tipo_pago }}</td>
                                         <td>{{ $pay->created_at }}</td>
+                                        <td>
+                                            <form action="{{ route('admin.mercadopago.suscripcion.cancel') }}" method="POST">
+                                                @csrf
+                                                <input type="text" name="pago_id" value="{{ $pay->pago_id }}">
+                                                <button type="submit">Reembolsar</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

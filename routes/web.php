@@ -73,11 +73,11 @@ Route::get('/mercadopago/suscription/pending', [MercadoPagoSuscripcionController
 
 
 
-//lista de pagos mercadopago admin - [productos-suscripciones-reembolsos]
+//lista de pagos mercadopago admin - [productos(reembolsos)-suscripciones(reembolsos)]
 Route::get('/mercadopago/list/pay', [MercadoPagoController::class, 'index'])->name('admin.mercadopago.index');
-Route::post('/mercadopago/cancelar/compra', [MercadoPagoController::class, 'cancel'])->name('mercadopago.cancel');
+Route::post('/mercadopago/cancelar/pay', [MercadoPagoController::class, 'cancel'])->name('admin.mercadopago.cancel');
 Route::get('/mercadopago/list/suscription', [MercadoPagoSuscripcionController::class, 'index'])->name('admin.mercadopago.suscription.index');
-
+Route::post('/mercadopago/cancelar/suscripcion', [MercadoPagoSuscripcionController::class, 'cancel'])->name('admin.mercadopago.suscripcion.cancel');
 
 
 //inicio de session y cierre

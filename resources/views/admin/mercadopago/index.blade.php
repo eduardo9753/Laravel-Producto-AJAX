@@ -34,7 +34,7 @@
                                         <td>{{ $pay->tipo_pago }}</td>
                                         <td>{{ $pay->created_at }}</td>
                                         <td>
-                                            <form action="{{ route('mercadopago.cancel') }}" method="POST">
+                                            <form action="{{ route('admin.mercadopago.cancel') }}" method="POST">
                                                 @csrf
                                                 <input type="text" name="pago_id" value="{{ $pay->pago_id }}">
                                                 <button type="submit">Reembolsar</button>

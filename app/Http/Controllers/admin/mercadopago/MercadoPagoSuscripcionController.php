@@ -18,4 +18,28 @@ class MercadoPagoSuscripcionController extends Controller
         $payments = Pay::where('tipo_pago', '=', 'Suscripcion')->get();
         return view('admin.mercadopago.list', ['payments' => $payments]);
     }
+
+    //METODO PARA  CANCELAR UNA SUSCRIPCION (DEJAR DE COBRAR UNA SUSCRIPCION) 
+    public function cancel(Request $request)
+    {
+        // Configura tu clave secreta de MercadoPago
+        $secretKey = config('mercadopago.token');
+
+        // Construye la URL de la API de reembolso de MercadoPago
+        $cancelUrl = "https://api.mercadopago.com/preapproval/$request->pago_id";
+
+        // Realiza la solicitud HTTP para realizar el reembolso
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $secretKey,
+            'Content-Type' => 'application/json',
+        ])->delete($cancelUrl);
+
+        if ($response->successful()) {
+            // Suscripción cancelada exitosamente
+            return response()->json(['message' => 'Suscripción cancelada exitosamente'], 200);
+        } else {
+            // Hubo un error al cancelar la suscripción
+            return response()->json(['error' => $response->body()], $response->status());
+        }
+    }
 }
