@@ -11,7 +11,7 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="card">
-                    <div class="card-header bg-dark text-white">Lista de Jugos</div>
+                    <div class="card-header bg-dark text-white">Lista de Pagos</div>
                     {{-- AQUI SE VAN A CARGAR LOS DATOS CON VIA AJAX --}}
                     <div class="card-body" id="">
                         <table class="table">
@@ -22,6 +22,7 @@
                                     <th scope="col">Codigo Pago</th>
                                     <th scope="col">Tipo Pago</th>
                                     <th scope="col">Fecha</th>
+                                    <th scope="col">Reembolso</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,6 +33,13 @@
                                         <td>{{ $pay->pago_id }}</td>
                                         <td>{{ $pay->tipo_pago }}</td>
                                         <td>{{ $pay->created_at }}</td>
+                                        <td>
+                                            <form action="{{ route('mercadopago.cancel') }}" method="POST">
+                                                @csrf
+                                                <input type="text" name="pago_id" value="{{ $pay->pago_id }}">
+                                                <button type="submit">Reembolsar</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

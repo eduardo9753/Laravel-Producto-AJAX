@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Pay;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use MercadoPago\Payment;
 use MercadoPago\SDK;
 use MercadoPago\Preference;
 use MercadoPago\Item;
@@ -80,7 +81,7 @@ class MercadoPagoControllerCliente extends Controller
         }
     }
 
-    
+
     //cuando el cliente le de click al boton "Volver al sitio" 
     //guardaremos los datos de la comprar
     public function success(Request $request)
@@ -90,7 +91,7 @@ class MercadoPagoControllerCliente extends Controller
             $save = Pay::create([
                 'status' => $request->status,
                 'pago_id' => $request->payment_id, //con esta id se puede gestionar los datos en mercado pago
-                'tipo_pago' => 'Producto',//$request->payment_type
+                'tipo_pago' => 'Producto', //$request->payment_type
             ]);
 
             if ($save) {
@@ -115,19 +116,29 @@ class MercadoPagoControllerCliente extends Controller
     //METODO PARA  CANCELAR UN PAGO (COMPRA DE PRODUCTO) DEVOLUCION 
     public function cancel(Request $request)
     {
-        // ID del pago que deseas reembolsar
-        $paymentId = '64200528550';
+        // Configura tu clave secreta de MercadoPago
+        $secretKey = config('mercadopago.token');
 
-        // URL de la API de MercadoPago para realizar un reembolso
-        $refundUrl = 'https://api.mercadopago.com/v1/payments/' . $paymentId . '/refunds';
+        // Define la cantidad a reembolsar (ajusta esto según tus necesidades)
+        $amount = 10.0;
 
-        // Datos de autenticación (tu clave de acceso de MercadoPago)
-        $accessToken = config('mercadopago.token');
+        // Construye la URL de la API de reembolso de MercadoPago
+        $refundUrl = "https://api.mercadopago.com/v1/payments/$request->pago_id/refunds";
 
+        // Realiza la solicitud HTTP para realizar el reembolso
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $accessToken,
-        ])->post($refundUrl);
+            'Authorization' => 'Bearer ' . $secretKey,
+            'Content-Type' => 'application/json',
+        ])->post($refundUrl, [
+            'amount' => $amount,
+        ]);
 
-        dd($response);
+        if ($response->successful()) {
+            // Reembolso exitoso
+            return response()->json(['message' => 'Reembolso exitoso'], 200);
+        } else {
+            // Hubo un error al realizar el reembolso
+            return response()->json(['error' => $response->body()], $response->status());
+        }
     }
 }

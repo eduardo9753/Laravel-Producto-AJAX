@@ -11,7 +11,7 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="card">
-                    <div class="card-header bg-dark text-white">Lista de Jugos</div>
+                    <div class="card-header bg-dark text-white">Lista de Suscripciones</div>
                     {{-- AQUI SE VAN A CARGAR LOS DATOS CON VIA AJAX --}}
                     <div class="card-body" id="">
                         <table class="table">
