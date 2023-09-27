@@ -20,8 +20,7 @@ class MercadoPagoWebHookController extends Controller
 
         // Registra los datos del webhook en el registro de eventos (Log)
       
-        Log::info(json_encode($data, JSON_PRETTY_PRINT));
-        Log::info('Datos del webhook de Mercado Pago:' . $data['preapproval_id']);
+        Log::info('Datos del webhook de Mercado Pago:' . $request);
         // Realiza otras acciones según sea necesario, como procesar los datos
 
 
