@@ -24,6 +24,7 @@ class MercadoPagoWebHookController extends Controller
 
             // Registra la notificación en el registro (log)
             Log::info('Mercado Pago type ' . $payload['type']);
+            Log::info('Mercado Pago Status ' . $payload['status']);
             Log::info('Mercado Pago id pago ' . $payload['data']['id']);
         }
 
