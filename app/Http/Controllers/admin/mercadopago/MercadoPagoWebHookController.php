@@ -16,19 +16,14 @@ class MercadoPagoWebHookController extends Controller
         // Asumiendo que el evento del webhook es un pago exitoso
         if ($payload['type'] === 'payment') {
             $paymentId = $payload['data']['id'];
-            $status = $payload['data']['status'];
             $amount = $payload['data']['transaction_amount'];
             // Puedes acceder a más datos según sea necesario
             
             // Aquí puedes actualizar el estado de la orden en tu base de datos
             // Puedes agregar lógica adicional según tus necesidades
-            
-            // Registra la notificación en el registro (log)
-            Log::info('Mercado Pago Webhook received for payment ' . $paymentId . ' - Status: ' . $status);
         }
 
         Log::info('paymentId: ' . $paymentId . '');
-        Log::info('status: ' .  $status. '');
         Log::info('amount:  ' . $amount . '');
         Log::info('type:  ' . $payload['type'] . '');
     }
