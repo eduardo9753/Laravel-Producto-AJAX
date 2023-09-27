@@ -11,47 +11,23 @@ class MercadoPagoWebHookController extends Controller
 {
     public function index(Request $request)
     {
-        // Obtén el Access Token de Mercado Pago
-        $accessToken = config('mercadopago.token');
+        // Verificar la autenticidad de la solicitud de Mercado Pago aquí si es necesario
 
-        // Verifica la firma utilizando el Access Token (como se explicó anteriormente)
-        $payload = $request->getContent();
+        $payload = json_decode($request->getContent(), true);
 
-        if ($this->verifySignature($payload, $request->header('x-signature'), $accessToken)) {
-            $data = json_decode($payload, true);
+        // Asumiendo que el evento del webhook es un pago exitoso
+        if ($payload['type'] === 'payment') {
+            $paymentId = $payload['data']['id'];
+            $status = $payload['data']['status'];
 
-            // Asegúrate de que la notificación sea de un pago exitoso
-            if ($data['type'] === 'payment' && $data['data']['status'] === 'approved') {
-                // Accede a los datos del pago
-                $paymentId = $data['data']['id'];
-                $paymentStatus = $data['data']['status'];
+            // Aquí puedes actualizar el estado de la orden en tu base de datos
+            // Puedes agregar lógica adicional según tus necesidades
 
-                // Aquí puedes procesar los datos del pago
-                // Por ejemplo, actualiza el estado de la orden en tu base de datos
-                // o envía notificaciones por correo electrónico al cliente
-            }
-
-            // Responde a la solicitud de Mercado Pago para confirmar la recepción
-            return response()->json(['status' => 'ok']);
-        } else {
-            // La firma no es válida, ignora la notificación o registra un error
-            $data = json_decode($payload, true);
-            Log::info('Datos: ' . $payload['data']);
-            Log::info('id del pago: ' . $data['data']['id']);
-            Log::error('Firma de Mercado Pago no válida: ' . $request->header('x-signature'));
-            return response()->json(['status' => 'error']);
+            // Registra la notificación en el registro (log)
+            Log::info('Mercado Pago Webhook received for payment ' . $paymentId . ' - Status: ' . $status);
         }
-    }
 
-    private function verifySignature($payload, $signature, $accessToken)
-    {
-        $expectedSignature = hash_hmac('sha256', $payload, $accessToken);
-        return $signature === $expectedSignature;
-    }
-
-    private function sendPaymentNotification($data)
-    {
-        // Implementa la lógica para enviar una notificación por correo electrónico
-        // ...
+        // Responde a la solicitud de Mercado Pago para confirmar la recepción
+        return response()->json(['status' => 'ok']);
     }
 }
