@@ -41,6 +41,6 @@ class MercadoPagoWebHookController extends Controller
            
         }
 
-        Log::error('Datos de la compra no guardados', $request);
+        Log::info('Datos de la compra no guardados', $request);
     }
 }
