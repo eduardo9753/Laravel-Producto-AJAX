@@ -11,36 +11,38 @@ class MercadoPagoWebHookController extends Controller
 {
     public function index(Request $request)
     {
-        $jsonData = $request->getContent(); // Obtén la cadena JSON de la solicitud
-        $dataArray = json_decode($jsonData, true); // Convierte la cadena JSON en un arreglo asociativo
+        /* Verificar la autenticidad de la solicitud de Mercado Pago aquí si es necesario
+        $payload = json_decode($request->getContent(), true);
 
-
-        //Asumiendo que el evento del webhook es un pago exitoso
-        if ($dataArray['type'] === 'payment') {
-            $id_pago = $dataArray['data']['id'];
+        // Asumiendo que el evento del webhook es un pago exitoso
+        if ($payload['type'] === 'payment' && $payload['data']['status'] === 'approved') {
+            $paymentId = $payload['data']['id'];
 
             $save = Pay::create([
                 'status' => 'approved',
-                'pago_id' => $id_pago, //con esta id se puede gestionar los datos en mercado pago
+                'pago_id' => $paymentId, //con esta id se puede gestionar los datos en mercado pago
                 'tipo_pago' => 'Producto', //$request->payment_type
             ]);
 
             if ($save) {
-                Log::info('Datos de la compra guardados correctamente');
-                return response()->json(['status' => 'ok']);
+                Log::info('Datos guardados correctamente');
             } else {
-                Log::error('Datos de la compra no guardados');
+                Log::error('Datos no guardados');
             }
         } else {
-            /*$save = Pay::create([
-                'status' => 'approved',
-                'pago_id' => $id_pago, //con esta id se puede gestionar los datos en mercado pago
-                'tipo_pago' => 'Producto', //$request->payment_type
-            ]); */
-
-           
+            Log::error('Error de tipos de dato: ');
         }
 
-        Log::info('Datos de la compra no guardados', $request);
+        // Responde a la solicitud de Mercado Pago para confirmar la recepción
+        return response()->json(['status' => 'ok']);*/
+        $jsonData = $request->getContent(); // Obtén la cadena JSON de la solicitud
+        $dataArray = json_decode($jsonData, true); // Convierte la cadena JSON en un arreglo asociativo
+
+        // Ahora puedes acceder a los datos específicos
+        $id_pago = $dataArray['data']['id'];
+        $dateCreated = $dataArray['date_created'];
+        $type = $dataArray['type'];
+
+        Log::info('Datos guardados correctamente' . $request);
     }
 }
