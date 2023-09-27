@@ -30,7 +30,7 @@ class MercadoPagoSuscripcionController extends Controller
         $accessToken = config('mercadopago.token'); // Reemplaza con tu token real
 
         // Construye la URL del endpoint de cancelación de suscripción
-        $url = "https://api.mercadopago.com/preapproval/$request->preapprovalId/cancel";
+        $url = "https://api.mercadopago.com/preapproval/$request->preapprovalId";
 
         try {
             // Realiza una solicitud POST a la URL de cancelación
