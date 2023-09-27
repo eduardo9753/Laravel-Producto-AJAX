@@ -21,15 +21,15 @@ class MercadoPagoWebHookController extends Controller
         $secretKey = config('mercadopago.token');
 
 
-       
-        
-       
+
+
+        Log::info('FIRMA ENVIADA POR MERCADOPAGO ' . $signature . 'FIRMA MIA: ' . hash_hmac('sha256', $payload, $secretKey));
         if (hash_hmac('sha256', $payload, $secretKey) === $signature) {
             // La firma es válida, el webhook es auténtico
 
             // Procesa la notificación y toma las acciones necesarias
             $data = json_decode($payload, true);
-           
+
 
             Log::info('DATOS DE LA COMPRAR' . $payload . '');
             Log::info('FIRMA ENVIADA POR MERCADOPAGO ' . $signature . '');
