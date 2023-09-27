@@ -81,7 +81,7 @@ class MercadoPagoSuscripcionControllerCliente extends Controller
     {
         //puedes registrarlo en la base de datos
         $save = Pay::create([
-            'status' => $request->status,
+            'status' => 'approved',
             'pago_id' => $request->preapproval_id, //id es distinto de un pago normal , es usado para pagos recurrentes 
             'tipo_pago' => 'Suscripcion', // $request->payment_type
         ]);
