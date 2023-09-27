@@ -38,7 +38,9 @@ class MercadoPagoWebHookController extends Controller
                 'tipo_pago' => 'Producto', //$request->payment_type
             ]); */
 
-            Log::error('Datos de la compra no guardados', $request);
+           
         }
+
+        Log::error('Datos de la compra no guardados', $request);
     }
 }
