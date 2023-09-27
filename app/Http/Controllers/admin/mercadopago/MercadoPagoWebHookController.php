@@ -15,9 +15,9 @@ class MercadoPagoWebHookController extends Controller
         $dataArray = json_decode($jsonData, true); // Convierte la cadena JSON en un arreglo asociativo
 
         if (isset($request->preapproval_id)) {
-            Log::info('el id de la suscripcion si existe');
+            Log::info('el id de la suscripcion si existe'.$request);
         } else {
-            Log::info('no existe id');
+            Log::info('no existe id'.$request);
         }
         /* Verifica si existe un campo "preapproval_id" en los datos
         if (isset($dataArray['preapproval_id'])) {
