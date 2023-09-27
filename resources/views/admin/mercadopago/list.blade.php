@@ -36,7 +36,7 @@
                                         <td>
                                             <form action="{{ route('admin.mercadopago.suscripcion.cancel') }}" method="POST">
                                                 @csrf
-                                                <input type="text" name="pago_id" value="{{ $pay->preapprovalId }}">
+                                                <input type="text" name="preapprovalId" value="{{ $pay->pago_id }}">
                                                 <button type="submit">Cancelar</button>
                                             </form>
                                         </td>
