@@ -14,7 +14,8 @@ class MercadoPagoWebHookController extends Controller
         $jsonData = $request->getContent(); // Obtén la cadena JSON de la solicitud
         $dataArray = json_decode($jsonData, true); // Convierte la cadena JSON en un arreglo asociativo
 
-        // Asumiendo que el evento del webhook es un pago exitoso
+        Log::info('Datos tipo de comprar'. $dataArray['type']);
+        /* Asumiendo que el evento del webhook es un pago exitoso
         if ($dataArray['type'] === 'payment') {
             $id_pago = $dataArray['data']['id'];
 
@@ -25,7 +26,7 @@ class MercadoPagoWebHookController extends Controller
             ]);
 
             if ($save) {
-                Log::info('Datos de la comprr guardados correctamente');
+                Log::info('Datos de la compra guardados correctamente');
                 return response()->json(['status' => 'ok']);
             } else {
                 Log::error('Datos de la compra no guardados');
@@ -53,6 +54,6 @@ class MercadoPagoWebHookController extends Controller
             }
         } else {
             Log::error('Error de tipos de dato: ');
-        }
+        }*/
     }
 }
