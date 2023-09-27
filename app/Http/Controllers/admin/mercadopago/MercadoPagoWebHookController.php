@@ -11,16 +11,25 @@ class MercadoPagoWebHookController extends Controller
 {
     public function index(Request $request)
     {
-        //Obtén el contenido de la solicitud (JSON del webhook)
-        $payload = $request->getContent();
+        $payload = json_decode($request->getContent(), true);
 
-        // Procesa la notificación y toma las acciones necesarias
-        $data = json_decode($payload, true);
-        if ($data['type'] === 'payment') {
-            // El evento es un pago completado, procesa la información
+        // Asumiendo que el evento del webhook es un pago exitoso
+        if ($payload['type'] === 'payment') {
+            $paymentId = $payload['data']['id'];
+            $status = $payload['data']['status'];
+            $amount = $payload['data']['transaction_amount'];
+            // Puedes acceder a más datos según sea necesario
+            
+            // Aquí puedes actualizar el estado de la orden en tu base de datos
+            // Puedes agregar lógica adicional según tus necesidades
+            
+            // Registra la notificación en el registro (log)
+            Log::info('Mercado Pago Webhook received for payment ' . $paymentId . ' - Status: ' . $status);
         }
 
-        // Responde a la notificación con un código 200 OK
-        Log::info('Datos' . $data . ' ');
+        Log::info('paymentId: ' . $paymentId . '');
+        Log::info('status: ' .  $status. '');
+        Log::info('amount:  ' . $amount . '');
+        Log::info('type:  ' . $payload['type'] . '');
     }
 }
