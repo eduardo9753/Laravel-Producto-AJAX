@@ -20,6 +20,10 @@ class MercadoPagoWebHookController extends Controller
         // Verifica la firma HMAC
         $secretKey = config('mercadopago.token');
 
+
+        Log::info('datos de captura ' . $payload . '');
+        Log::info('Firma ' . $signature . '');
+       
         if (hash_hmac('sha256', $payload, $secretKey) === $signature) {
             // La firma es válida, el webhook es auténtico
 
@@ -39,8 +43,6 @@ class MercadoPagoWebHookController extends Controller
 
             // Responde a la notificación con un código 200 OK
             //return response()->json(['message' => 'Webhook received'], 200);
-            Log::info('datos de captura ' . $payload . '');
-            Log::info('Firma ' . $signature . '');
             Log::info('Mercado Pago Webhook received for payment ' . $data['data']['id'] . ' - Status: ' . $data['data']['status']);
         } else {
             // La firma no es válida, ignora la notificación o maneja el error
