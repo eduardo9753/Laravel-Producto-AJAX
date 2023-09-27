@@ -18,17 +18,18 @@ class MercadoPagoWebHookController extends Controller
         $signature = $request->header('x-signature');
         $payload = $request->getContent();
 
+        Log::error('status: ' . $payload['data']['status']);
+        Log::error('payment: ' . $payload['type']);
+
         if ($this->verifySignature($payload, $signature, $accessToken)) {
             // La firma es válida, procesa la notificación
             $data = json_decode($payload, true);
 
             // Resto del código...
-            Log::error('Datos: ' . $data);
         } else {
             // La firma no es válida, ignora la notificación o registra un error
             $data = json_decode($payload, true);
             Log::error('id pago: ' . $data['data']['id']);
-            Log::error('status: ' . $data['data']['status']);
             Log::error('Firma de Mercado Pago no válida: ' . $signature);
             return response()->json(['status' => 'error']);
         }
