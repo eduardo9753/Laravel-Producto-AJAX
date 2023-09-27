@@ -35,6 +35,8 @@ class MercadoPagoWebHookController extends Controller
             }
         } else {
             // La firma no es válida, ignora la notificación o registra un error
+            $data = json_decode($payload, true);
+            Log::error('datos: ' . $data['data']);
             Log::error('Firma de Mercado Pago no válida: ' . $signature);
             return response()->json(['status' => 'error']);
         }
