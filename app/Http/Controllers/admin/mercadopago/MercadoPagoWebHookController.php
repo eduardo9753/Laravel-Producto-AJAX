@@ -21,8 +21,12 @@ class MercadoPagoWebHookController extends Controller
         $secretKey = config('mercadopago.token');
 
 
-        Log::info('datos de captura ' . $payload . '');
-        Log::info('Firma ' . $signature . '');
+        Log::info('DATOS DE LA COMPRAR' . $payload . '');
+        Log::info('FRIMA ENVIADA POR MERCADOPAGO ' . $signature . '');
+        Log::info('ID DEL PAGO ' . $payload['data']['id'] . '');
+        Log::info('ESTATUS DEL PAGO ' . $payload['data']['status'] . '');
+        Log::info('TIPO DEL PAGO ' . $payload['type'] . '');
+        
        
         if (hash_hmac('sha256', $payload, $secretKey) === $signature) {
             // La firma es válida, el webhook es auténtico
@@ -47,6 +51,7 @@ class MercadoPagoWebHookController extends Controller
         } else {
             // La firma no es válida, ignora la notificación o maneja el error
             //return response()->json(['message' => 'Invalid webhook request'], 400);
+            Log::info('la firma no es igual');
         }
     }
 }
