@@ -19,13 +19,12 @@ class MercadoPagoWebHookController extends Controller
         $data = json_decode($payload, true);
 
         // Registra los datos del webhook en el registro de eventos (Log)
-        Log::info('Datos del webhook de Mercado Pago:');
+      
         Log::info(json_encode($data, JSON_PRETTY_PRINT));
-
+        Log::info('Datos del webhook de Mercado Pago:' . $data['preapproval_id']);
         // Realiza otras acciones según sea necesario, como procesar los datos
 
-        // Responde con un código de estado 200 para confirmar la recepción
-        return response()->json(['message' => 'Notificación recibida'], 200);
+
 
         /* $jsonData = $request->getContent(); // Obtén la cadena JSON de la solicitud
         $dataArray = json_decode($jsonData, true); // Convierte la cadena JSON en un arreglo asociativo
