@@ -11,13 +11,13 @@ class MercadoPagoWebHookController extends Controller
 {
     public function index(Request $request)
     {
-        $$jsonData = $request->getContent(); // Obtén la cadena JSON de la solicitud
+        $jsonData = $request->getContent(); // Obtén la cadena JSON de la solicitud
         $dataArray = json_decode($jsonData, true); // Convierte la cadena JSON en un arreglo asociativo
 
         // Verifica si existe un campo "preapproval_id" en los datos
         if (isset($dataArray['preapproval_id'])) {
-            // Se trata de una notificación de suscripción
-            $subscriptionId = $data['preapproval_id'];
+           
+            $subscriptionId = $dataArray['preapproval_id'];
             $save = Pay::create([
                 'status' => 'approved',
                 'pago_id' => $subscriptionId, //con esta id se puede gestionar los datos en mercado pago
