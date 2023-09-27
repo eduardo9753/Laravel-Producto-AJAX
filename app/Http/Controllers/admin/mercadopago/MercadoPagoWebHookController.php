@@ -16,7 +16,6 @@ class MercadoPagoWebHookController extends Controller
         // Asumiendo que el evento del webhook es un pago exitoso
         if ($payload['type'] === 'payment') {
             $paymentId = $payload['data']['id'];
-            $orderId = $payload['data']['order']['id'];
             $status = $payload['data']['status'];
 
             // Aquí puedes actualizar el estado de la orden en tu base de datos
