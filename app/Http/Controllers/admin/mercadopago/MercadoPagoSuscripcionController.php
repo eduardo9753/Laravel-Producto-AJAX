@@ -26,13 +26,13 @@ class MercadoPagoSuscripcionController extends Controller
         $secretKey = config('mercadopago.token');
 
         // Construye la URL de la API de reembolso de MercadoPago
-        $cancelUrl = "https://api.mercadopago.com/preapproval/$request->pago_id";
+        $cancelUrl = "https://api.mercadopago.com/preapproval/cancel/$request->preapprovalId";
 
         // Realiza la solicitud HTTP para realizar el reembolso
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $secretKey,
             'Content-Type' => 'application/json',
-        ])->delete($cancelUrl);
+        ])->post($cancelUrl);
 
         if ($response->successful()) {
             // Suscripción cancelada exitosamente

@@ -36,8 +36,8 @@
                                         <td>
                                             <form action="{{ route('admin.mercadopago.suscripcion.cancel') }}" method="POST">
                                                 @csrf
-                                                <input type="text" name="pago_id" value="{{ $pay->pago_id }}">
-                                                <button type="submit">Reembolsar</button>
+                                                <input type="text" name="pago_id" value="{{ $pay->preapprovalId }}">
+                                                <button type="submit">Cancelar</button>
                                             </form>
                                         </td>
                                     </tr>
