@@ -15,12 +15,18 @@ class MercadoPagoWebHookController extends Controller
 
         // Asumiendo que el evento del webhook es un pago exitoso
         if ($payload['type'] === 'payment' && $payload['data']['status'] === 'approved') {
-            // Aquí puedes agregar lógica para procesar el pago exitoso
-            // Por ejemplo, puedes enviar una notificación por correo electrónico
-            $this->sendPaymentNotification($payload['data']);
-            Log::info('type:  ' . $payload['type']);
-            Log::info('status:  ' . $payload['data']['status']);
-            Log::info('id pago:  ' . $payload['data']['id']);
+            $save = Pay::create([
+                'status' => $payload['data']['status'],
+                'pago_id' => $payload['data']['id'], //con esta id se puede gestionar los datos en mercado pago
+                'tipo_pago' => 'Producto', //$request->payment_type
+            ]);
+
+            if ($save) {
+                Log::info('PAGO GUARDADO CORRECTAMENTE');
+            } else {
+                Log::info('EL PAGO NO SE COMPLETO');
+            }
+           
         }
 
         // Responde a la solicitud de Mercado Pago para confirmar la recepción
