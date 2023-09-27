@@ -65,6 +65,8 @@
                                     <button class="btn btn-primary btn-lg btn-block" id="checkout-btn">Checkout</button>
                                 </form>
 
+                                {{--<a mp-mode="dftl" href="https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=2c9380848ab2cb05018aba814d4c05a0" name="MP-payButton" class='blue-ar-l-rn-none'>Suscribirme</a>
+--}}
                                 <a id="link-suscripcion-mercadopago" >Pagar Suscripcion</a>
                             </div>
                         </div>

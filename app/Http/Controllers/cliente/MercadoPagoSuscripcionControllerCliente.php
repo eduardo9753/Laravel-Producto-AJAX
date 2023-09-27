@@ -62,7 +62,7 @@ class MercadoPagoSuscripcionControllerCliente extends Controller
         // IMPORTANTE CUANDO ES SUSCRIPCION YA NO SE ENVIA LA $preference->id. ESO SOLO SE PASA EN CUANDO SE COMPRA PRODUCTOS
         if ($save) {
             $dato = [
-                'init_point' =>  $preference->init_point
+                'init_point' =>  'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=2c9380848ab2cb05018aba814d4c05a0'
             ];
             return response()->json([
                 'code' => 1,
@@ -79,7 +79,9 @@ class MercadoPagoSuscripcionControllerCliente extends Controller
 
     public function success(Request $request)
     {
-        //puedes registrarlo en la base de datos
+
+        dd($request);
+        /*puedes registrarlo en la base de datos
         if ($request->status === 'approved') {
             $save = Pay::create([
                 'status' => $request->status,
@@ -92,7 +94,7 @@ class MercadoPagoSuscripcionControllerCliente extends Controller
             } else {
                 return redirect()->route('inicio.index')->with('nopay', 'No se realizó el pago de tu suscripcion correctamente');
             }
-        }
+        }*/
         //else para las demos estados 
     }
 
