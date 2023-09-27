@@ -14,30 +14,30 @@ class MercadoPagoWebHookController extends Controller
         // Obtén el Access Token de Mercado Pago
         $accessToken = config('mercadopago.token');
 
-        // Verifica la firma utilizando el Access Token
-        $signature = $request->header('x-signature');
+        // Verifica la firma utilizando el Access Token (como se explicó anteriormente)
         $payload = $request->getContent();
 
-        if ($this->verifySignature($payload, $signature, $accessToken)) {
-            // Verifica si $payload es una cadena JSON válida
+        if ($this->verifySignature($payload, $request->header('x-signature'), $accessToken)) {
             $data = json_decode($payload, true);
 
-            if (json_last_error() === JSON_ERROR_NONE && is_array($data)) {
-                // La decodificación fue exitosa y $data es un array
-                if (isset($data['type']) && $data['type'] === 'payment') {
-                    // Asumiendo que el evento del webhook es un pago exitoso
-                    // Resto del código...
-                }
-            } else {
-                // La cadena JSON no es válida
-                Log::error('Payload de Mercado Pago no es JSON válido: ' . $payload);
-                return response()->json(['status' => 'error']);
+            // Asegúrate de que la notificación sea de un pago exitoso
+            if ($data['type'] === 'payment' && $data['data']['status'] === 'approved') {
+                // Accede a los datos del pago
+                $paymentId = $data['data']['id'];
+                $paymentStatus = $data['data']['status'];
+
+                // Aquí puedes procesar los datos del pago
+                // Por ejemplo, actualiza el estado de la orden en tu base de datos
+                // o envía notificaciones por correo electrónico al cliente
             }
+
+            // Responde a la solicitud de Mercado Pago para confirmar la recepción
+            return response()->json(['status' => 'ok']);
         } else {
             // La firma no es válida, ignora la notificación o registra un error
             $data = json_decode($payload, true);
-            Log::error('datos: ' . $data['data']);
-            Log::error('Firma de Mercado Pago no válida: ' . $signature);
+            Log::error('id del pago: ' . $data['data']['id']);
+            Log::error('Firma de Mercado Pago no válida: ' . $request->header('x-signature'));
             return response()->json(['status' => 'error']);
         }
     }
