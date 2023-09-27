@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\admin\mercadopago;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pay;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class MercadoPagoWebHookController extends Controller
 {
@@ -34,5 +36,28 @@ class MercadoPagoWebHookController extends Controller
             // La firma no es válida, ignora la notificación o maneja el error
             return response()->json(['message' => 'Invalid webhook request'], 400);
         }*/
+
+        // Verificar la autenticidad de la solicitud de Mercado Pago aquí si es necesario
+        
+        $payload = json_decode($request->getContent(), true);
+
+        // Asumiendo que el evento del webhook es un pago exitoso
+        if ($payload['type'] === 'payment') {
+            $paymentId = $payload['data']['id'];
+            $orderId = $payload['data']['order']['id'];
+            $status = $payload['data']['status'];
+            
+            Pay::create([
+                'status' => $status,
+                'pago_id' => $paymentId, //con esta id se puede gestionar los datos en mercado pago
+                'tipo_pago' => 'Producto', //$request->payment_type
+            ]);
+
+            // Registra la notificación en el registro (log)
+            Log::info('Mercado Pago Webhook received for payment ' . $paymentId . ' - Status: ' . $status);
+        }
+
+        // Responde a la solicitud de Mercado Pago para confirmar la recepción
+        return response()->json(['status' => 'ok']);
     }
 }
