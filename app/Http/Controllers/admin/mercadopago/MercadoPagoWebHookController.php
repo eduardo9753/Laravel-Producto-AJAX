@@ -11,33 +11,35 @@ class MercadoPagoWebHookController extends Controller
 {
     public function index(Request $request)
     {
-        $payload = json_decode($request->getContent(), true);
+        // Obtén el Access Token de Mercado Pago
+        $accessToken = config('mercadopago.token');
 
-        $data = json_decode($payload, true);
-        // Asumiendo que el evento del webhook es un pago exitoso
-        if ($data['type'] === 'payment' && $data['data']['status'] === 'approved') {
-            $save = Pay::create([
-                'status' => $data['data']['status'],
-                'pago_id' => $data['data']['id'], //con esta id se puede gestionar los datos en mercado pago
-                'tipo_pago' => 'Producto', //$request->payment_type
-            ]);
+        // Verifica la firma utilizando el Access Token
+        $signature = $request->header('x-signature');
+        $payload = $request->getContent();
 
-            if ($save) {
-                // Responde a la solicitud de Mercado Pago para confirmar la recepción
-                return response()->json(['status' => 'ok']);
-                Log::info('PAGO GUARDADO CORRECTAMENTE');
-            } else {
-                Log::info('EL PAGO NO SE COMPLETO');
-            }
+        if ($this->verifySignature($payload, $signature, $accessToken)) {
+            // La firma es válida, procesa la notificación
+            $data = json_decode($payload, true);
+
+            // Resto del código...
+            Log::error('Datos: ' . $data);
+        } else {
+            // La firma no es válida, ignora la notificación o registra un error
+            Log::error('Firma de Mercado Pago no válida: ' . $signature);
+            return response()->json(['status' => 'error']);
         }
+    }
+
+    private function verifySignature($payload, $signature, $accessToken)
+    {
+        $expectedSignature = hash_hmac('sha256', $payload, $accessToken);
+        return $signature === $expectedSignature;
     }
 
     private function sendPaymentNotification($data)
     {
-        Log::info('Datos:  ' . $data);
-        // Aquí puedes implementar la lógica para enviar una notificación por correo electrónico
-        // Por ejemplo, puedes utilizar el sistema de notificaciones de Laravel para enviar el correo
-        // $user = User::find($data['customer_id']);
-        // $user->notify(new PaymentNotification($data));
+        // Implementa la lógica para enviar una notificación por correo electrónico
+        // ...
     }
 }
