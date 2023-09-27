@@ -28,7 +28,6 @@ class MercadoPagoWebHookController extends Controller
             if ($data['type'] === 'payment') {
                 // El evento es un pago completado, procesa la información
                 $paymentId = $data['data']['id'];
-                $orderId = $data['data']['order']['id'];
                 $status = $data['data']['status'];
                 Pay::create([
                     'status' => $status,
