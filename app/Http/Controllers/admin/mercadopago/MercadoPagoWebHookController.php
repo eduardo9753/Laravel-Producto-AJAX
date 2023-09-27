@@ -21,11 +21,7 @@ class MercadoPagoWebHookController extends Controller
         $secretKey = config('mercadopago.token');
 
 
-        Log::info('DATOS DE LA COMPRAR' . $payload . '');
-        Log::info('FRIMA ENVIADA POR MERCADOPAGO ' . $signature . '');
-        Log::info('ID DEL PAGO ' . $payload['data']['id'] . '');
-        Log::info('ESTATUS DEL PAGO ' . $payload['data']['status'] . '');
-        Log::info('TIPO DEL PAGO ' . $payload['type'] . '');
+       
         
        
         if (hash_hmac('sha256', $payload, $secretKey) === $signature) {
@@ -33,25 +29,18 @@ class MercadoPagoWebHookController extends Controller
 
             // Procesa la notificación y toma las acciones necesarias
             $data = json_decode($payload, true);
-            /*if ($data['type'] === 'payment') {
-                // El evento es un pago completado, procesa la información
-                $paymentId = $data['data']['id'];
-                $status = $data['data']['status'];
-                Pay::create([
-                    'status' => $status,
-                    'pago_id' => $paymentId, //con esta id se puede gestionar los datos en mercado pago
-                    'tipo_pago' => 'Producto', //$request->payment_type
-                ]);
-            }*/
+           
 
-
-            // Responde a la notificación con un código 200 OK
-            //return response()->json(['message' => 'Webhook received'], 200);
+            Log::info('DATOS DE LA COMPRAR' . $payload . '');
+            Log::info('FIRMA ENVIADA POR MERCADOPAGO ' . $signature . '');
+            Log::info('ID DEL PAGO ' . $data['data']['id'] . '');
+            Log::info('ESTATUS DEL PAGO ' . $data['data']['status'] . '');
+            Log::info('TIPO DEL PAGO ' . $data['type'] . '');
             Log::info('Mercado Pago Webhook received for payment ' . $data['data']['id'] . ' - Status: ' . $data['data']['status']);
         } else {
             // La firma no es válida, ignora la notificación o maneja el error
             //return response()->json(['message' => 'Invalid webhook request'], 400);
-            Log::info('la firma no es igual');
+            Log::info('LA FIRMA NO ES IGUAL');
         }
     }
 }
