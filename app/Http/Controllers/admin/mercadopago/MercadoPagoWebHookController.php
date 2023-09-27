@@ -17,13 +17,13 @@ class MercadoPagoWebHookController extends Controller
         if ($payload['type'] === 'payment') {
             $paymentId = $payload['data']['id'];
             // Puedes acceder a más datos según sea necesario
-            
+
             // Aquí puedes actualizar el estado de la orden en tu base de datos
             // Puedes agregar lógica adicional según tus necesidades
         }
 
-        Log::info('Datos:  ' . $payload['data'] . '');
-        Log::info('paymentId: ' . $paymentId . '');
-        Log::info('type:  ' . $payload['type'] . '');
+        Log::info('Datos:  ' . json_encode($payload['data']));
+        Log::info('paymentId: ' . $paymentId);
+        Log::info('type:  ' . $payload['type']);
     }
 }
