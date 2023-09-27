@@ -25,10 +25,31 @@ class MercadoPagoWebHookController extends Controller
             ]);
 
             if ($save) {
-                Log::info('Datos guardados correctamente');
+                Log::info('Datos de la comprr guardados correctamente');
                 return response()->json(['status' => 'ok']);
             } else {
-                Log::error('Datos no guardados');
+                Log::error('Datos de la compra no guardados');
+            }
+        } else {
+            Log::error('Error de tipos de dato: ');
+        }
+
+
+        // Asumiendo que el evento del webhook es relacionado con una suscripción
+        if ($dataArray['type'] === 'subscription') {
+            $id_pago = $dataArray['data']['id'];
+
+            $save = Pay::create([
+                'status' => 'approved',
+                'pago_id' => $id_pago, //con esta id se puede gestionar los datos en mercado pago
+                'tipo_pago' => 'Producto', //$request->payment_type
+            ]);
+
+            if ($save) {
+                Log::info('Datos de la suscripcion guardados correctamente');
+                return response()->json(['status' => 'ok']);
+            } else {
+                Log::error('Datos de la suscripcion no guardados');
             }
         } else {
             Log::error('Error de tipos de dato: ');
