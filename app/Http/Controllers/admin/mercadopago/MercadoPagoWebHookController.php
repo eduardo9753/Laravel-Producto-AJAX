@@ -11,18 +11,31 @@ class MercadoPagoWebHookController extends Controller
 {
     public function index(Request $request)
     {
-        $secretKey = config('mercadopago.token');
-        $payload = file_get_contents('php://input');
-        $signature = $request->header('x-signature');
+        $payload = json_decode($request->getContent(), true);
 
+        // Asumiendo que el evento del webhook es un pago exitoso
+        if ($payload['type'] === 'payment') {
+            $paymentId = $payload['data']['id'];
+            $orderId = $payload['data']['order']['id'];
+            $status = $payload['data']['status'];
 
-        Log::info('FIRMA ENVIADA POR MERCADOPAGO ' . $signature . 'FIRMA MIA: ' . hash_hmac('sha256', $payload, $secretKey));
-        if (!$this->isValidSignature($payload, $secretKey, $signature)) {
-            Log::info('LA FIRMA NO ES IGUAL');
-        } else {
-            // Procesa la notificación de Mercado Pago
-            $data = json_decode($payload, true);
-            Log::info('LA FIRMA ES CORRECTA' . $data);
+            // Aquí puedes actualizar el estado de la orden en tu base de datos
+            // Puedes agregar lógica adicional según tus necesidades
+
+            // Registra la notificación en el registro (log)
+            Log::info('Mercado Pago Webhook received for payment ' . $paymentId . ' - Status: ' . $status);
+        }
+
+        // Asumiendo que el evento del webhook es relacionado con una suscripción
+        if ($payload['type'] === 'subscription') {
+            $subscriptionId = $payload['data']['id'];
+            $status = $payload['data']['status'];
+
+            // Aquí puedes actualizar el estado de la suscripción en tu base de datos
+            // Puedes agregar lógica adicional según tus necesidades
+
+            // Registra la notificación en el registro (log)
+            Log::info('Mercado Pago Webhook received for subscription ' . $subscriptionId . ' - Status: ' . $status);
         }
     }
 }
