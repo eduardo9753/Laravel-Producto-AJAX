@@ -11,7 +11,7 @@ class MercadoPagoWebHookController extends Controller
 {
     public function index(Request $request)
     {
-        // Verificar la autenticidad de la solicitud de Mercado Pago aquí si es necesario
+        /* Verificar la autenticidad de la solicitud de Mercado Pago aquí si es necesario
         $payload = json_decode($request->getContent(), true);
 
         // Asumiendo que el evento del webhook es un pago exitoso
@@ -34,6 +34,7 @@ class MercadoPagoWebHookController extends Controller
         }
 
         // Responde a la solicitud de Mercado Pago para confirmar la recepción
-        return response()->json(['status' => 'ok']);
+        return response()->json(['status' => 'ok']);*/
+        Log::info('Datos guardados correctamente' . $request);
     }
 }
