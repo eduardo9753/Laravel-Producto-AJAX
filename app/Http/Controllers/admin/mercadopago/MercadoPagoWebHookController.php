@@ -19,19 +19,20 @@ class MercadoPagoWebHookController extends Controller
         $payload = $request->getContent();
 
         if ($this->verifySignature($payload, $signature, $accessToken)) {
-            // La firma es válida, procesa la notificación
+            // Verifica si $payload es una cadena JSON válida
             $data = json_decode($payload, true);
 
-            // Asumiendo que el evento del webhook es un pago exitoso
-            if ($data['type'] === 'payment' && $data['data']['status'] === 'approved') {
-                // Aquí puedes agregar lógica para procesar el pago exitoso
-                // Por ejemplo, puedes enviar una notificación por correo electrónico
-                $this->sendPaymentNotification($data['data']);
-                Log::error('Firma de Mercado Pago es válida: ' . $signature);
+            if (json_last_error() === JSON_ERROR_NONE && is_array($data)) {
+                // La decodificación fue exitosa y $data es un array
+                if (isset($data['type']) && $data['type'] === 'payment') {
+                    // Asumiendo que el evento del webhook es un pago exitoso
+                    // Resto del código...
+                }
+            } else {
+                // La cadena JSON no es válida
+                Log::error('Payload de Mercado Pago no es JSON válido: ' . $payload);
+                return response()->json(['status' => 'error']);
             }
-
-            // Responde a la solicitud de Mercado Pago para confirmar la recepción
-            return response()->json(['status' => 'ok']);
         } else {
             // La firma no es válida, ignora la notificación o registra un error
             Log::error('Firma de Mercado Pago no válida: ' . $signature);
