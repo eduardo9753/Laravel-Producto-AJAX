@@ -11,12 +11,26 @@ class MercadoPagoWebHookController extends Controller
 {
     public function index(Request $request)
     {
-        $jsonData = $request->getContent(); // Obtén la cadena JSON de la solicitud
+
+        // Obtén el contenido de la solicitud del webhook
+        $payload = $request->getContent();
+
+        // Decodifica el contenido JSON en un arreglo asociativo
+        $data = json_decode($payload, true);
+
+        // Registra los datos del webhook en el registro de eventos (Log)
+        Log::info('Datos del webhook de Mercado Pago:');
+        Log::info(json_encode($data, JSON_PRETTY_PRINT));
+
+        // Realiza otras acciones según sea necesario, como procesar los datos
+
+        // Responde con un código de estado 200 para confirmar la recepción
+        return response()->json(['message' => 'Notificación recibida'], 200);
+
+        /* $jsonData = $request->getContent(); // Obtén la cadena JSON de la solicitud
         $dataArray = json_decode($jsonData, true); // Convierte la cadena JSON en un arreglo asociativo
 
-        dd($request);
-
-        /* Verifica si existe un campo "preapproval_id" en los datos
+        //Verifica si existe un campo "preapproval_id" en los datos
         if (isset($dataArray['preapproval_id'])) {
            
             $subscriptionId = $dataArray['preapproval_id'];
