@@ -26,14 +26,21 @@ class MercadoPagoSuscripcionController extends Controller
             // Configura las credenciales de Mercado Pago
             SDK::setAccessToken(config('mercadopago.token'));
 
-            // Realiza la cancelación de la suscripción
-            $response = Preapproval::update($request->preapprovalId, ['status' => 'cancelled']);
+            // Obtén la instancia de Preapproval
+            $preapproval = Preapproval::find_by_id($request->preapprovalId);
 
-            if ($response['status'] === 200) {
+            // Realiza la cancelación de la suscripción
+            $preapproval->status = 'cancelled';
+            $preapproval->update();
+
+            // Verifica el estado de la suscripción después de la actualización
+            $preapproval = Preapproval::find_by_id($request->preapprovalId);
+
+            if ($preapproval->status === 'cancelled') {
                 // Suscripción cancelada correctamente
                 return response()->json(['success' => true, 'message' => 'Suscripción cancelada exitosamente']);
             } else {
-                return response()->json(['success' => false, 'message' => 'Error al cancelar la suscripción'], $response['status']);
+                return response()->json(['success' => false, 'message' => 'Error al cancelar la suscripción']);
             }
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
