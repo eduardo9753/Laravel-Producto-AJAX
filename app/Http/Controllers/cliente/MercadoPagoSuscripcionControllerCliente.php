@@ -79,22 +79,19 @@ class MercadoPagoSuscripcionControllerCliente extends Controller
 
     public function success(Request $request)
     {
+        if (isset($request->preapproval_id)) {
+            $save = Pay::create([
+                'status' => 'approved',
+                'pago_id' => $request->preapproval_id, //id es distinto de un pago normal , es usado para pagos recurrentes 
+                'tipo_pago' => 'Suscripcion',
+            ]);
 
-        dd($request);
-        /*puedes registrarlo en la base de datos
-        $save = Pay::create([
-            'status' => 'approved',
-            'pago_id' => $request->preapproval_id, //id es distinto de un pago normal , es usado para pagos recurrentes 
-            'tipo_pago' => 'Suscripcion', // $request->payment_type
-        ]);
-
-        if ($save) {
-            return redirect()->route('inicio.index')->with('pay', 'Se realizó el pago de tu suscripcion correctamente');
-        } else {
-            return redirect()->route('inicio.index')->with('nopay', 'No se realizó el pago de tu suscripcion correctamente');
-        }*/
-
-        
+            if ($save) {
+                return redirect()->route('inicio.index')->with('pay', 'Se realizó el pago de tu suscripcion correctamente');
+            } else {
+                return redirect()->route('inicio.index')->with('nopay', 'No se realizó el pago de tu suscripcion correctamente');
+            }
+        }
     }
 
     public function failure()
