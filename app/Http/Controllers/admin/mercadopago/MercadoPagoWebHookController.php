@@ -17,6 +17,8 @@ class MercadoPagoWebHookController extends Controller
         // Registra los datos en el log para depuración (puedes eliminar esto en producción)
         Log::info('Webhook Received:', $payload);
 
+        // Guarda los datos del $request en la sesión
+        $request->session()->put('data', $payload);
         //$jsonData = $request->getContent(); // Obtén la cadena JSON de la solicitud
         //$dataArray = json_decode($jsonData, true); // Convierte la cadena JSON en un arreglo asociativo
 
@@ -38,5 +40,10 @@ class MercadoPagoWebHookController extends Controller
         } else {
             Log::info('Datos de la compra guardado correctamente' . $request);
         }*/
+    }
+
+    public function webhookdata()
+    {
+        dd(session('data'));
     }
 }
