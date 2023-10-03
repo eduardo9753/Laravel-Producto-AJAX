@@ -9,11 +9,17 @@ use Illuminate\Support\Facades\Log;
 
 class MercadoPagoWebHookController extends Controller
 {
-    public function index(Request $request)
+    public function handle(Request $request)
     {
+        // Obtén los datos del webhook
+        $payload = $request->all();
+
+        // Registra los datos en el log para depuración (puedes eliminar esto en producción)
+        Log::info('Webhook Received:', $payload);
+
         //$jsonData = $request->getContent(); // Obtén la cadena JSON de la solicitud
         //$dataArray = json_decode($jsonData, true); // Convierte la cadena JSON en un arreglo asociativo
-        Log::info('Datos de la compra guardado correctamente' . $request);
+
         /*if ($dataArray['type'] === 'payment') {
 
             $id_pago = $dataArray['data']['id'];
