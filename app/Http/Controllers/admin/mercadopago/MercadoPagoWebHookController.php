@@ -11,8 +11,8 @@ class MercadoPagoWebHookController extends Controller
 {
     public function index(Request $request)
     {
-        $jsonData = $request->getContent(); // Obtén la cadena JSON de la solicitud
-        $dataArray = json_decode($jsonData, true); // Convierte la cadena JSON en un arreglo asociativo
+        //$jsonData = $request->getContent(); // Obtén la cadena JSON de la solicitud
+        //$dataArray = json_decode($jsonData, true); // Convierte la cadena JSON en un arreglo asociativo
         Log::info('Datos de la compra guardado correctamente' . $request);
         /*if ($dataArray['type'] === 'payment') {
 
