@@ -20,16 +20,19 @@ class MercadoPagoController extends Controller
     }
 
     //METODO PARA  CANCELAR UN PAGO (COMPRA DE PRODUCTO) DEVOLUCION 
-    public function cancel(Request $request)
+    public function reembolsar(Request $request)
     {
         // Configura tu clave secreta de MercadoPago
         $secretKey = config('mercadopago.token');
+
+        // Define el ID del pago que deseas reembolsar (deberías obtener esto de alguna manera, por ejemplo, desde una solicitud)
+        $pagoId = $request->pago_id;
 
         // Define la cantidad a reembolsar (ajusta esto según tus necesidades)
         $amount = 10.0;
 
         // Construye la URL de la API de reembolso de MercadoPago
-        $refundUrl = "https://api.mercadopago.com/v1/payments/$request->pago_id/refunds";
+        $refundUrl = "https://api.mercadopago.com/v1/payments/$pagoId/refunds";
 
         // Realiza la solicitud HTTP para realizar el reembolso
         $response = Http::withHeaders([
