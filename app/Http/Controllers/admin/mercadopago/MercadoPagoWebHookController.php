@@ -13,8 +13,8 @@ class MercadoPagoWebHookController extends Controller
     {
         $jsonData = $request->getContent(); // Obtén la cadena JSON de la solicitud
         $dataArray = json_decode($jsonData, true); // Convierte la cadena JSON en un arreglo asociativo
-
-        if ($dataArray['type'] === 'payment') {
+        Log::info('Datos de la compra guardado correctamente' . $request);
+        /*if ($dataArray['type'] === 'payment') {
 
             $id_pago = $dataArray['data']['id'];
             $save = Pay::create([
@@ -31,6 +31,6 @@ class MercadoPagoWebHookController extends Controller
             }
         } else {
             Log::info('Datos de la compra guardado correctamente' . $request);
-        }
+        }*/
     }
 }
