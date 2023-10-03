@@ -6,10 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Pay;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use GuzzleHttp\Client;
 use MercadoPago\SDK;
-use MercadoPago\Payment;
-use MercadoPago\Subscription;
+use MercadoPago\Preapproval;
+
 
 class MercadoPagoSuscripcionController extends Controller
 {
@@ -23,35 +22,21 @@ class MercadoPagoSuscripcionController extends Controller
     //METODO PARA  CANCELAR UNA SUSCRIPCION (DEJAR DE COBRAR UNA SUSCRIPCION) 
     public function cancel(Request $request)
     {
-        // Crea una instancia del cliente HTTP Guzzle
-        $client = new Client();
-
-        // Define las credenciales de acceso (token) de tu cuenta de Mercado Pago
-        $accessToken = config('mercadopago.token'); // Reemplaza con tu token real
-
-        // Realiza la cancelación de la suscripción
-        $url = "https://api.mercadopago.com/preapproval/$request->preapprovalId";
-
         try {
-            // Realiza una solicitud POST a la URL de cancelación
-            $response = $client->post($url, [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . $accessToken,
-                    'Content-Type' => 'application/json',
-                ],
-            ]);
+            // Configura las credenciales de Mercado Pago
+            SDK::setAccessToken(config('mercadopago.token'));
 
-            // Verifica el código de estado de la respuesta
-            if ($response->getStatusCode() === 200) {
-                // Suscripción cancelada con éxito
-                return response()->json(['message' => 'Suscripción cancelada con éxito'], 200);
+            // Realiza la cancelación de la suscripción
+            $response = Preapproval::update($request->preapprovalId, ['status' => 'cancelled']);
+
+            if ($response['status'] === 200) {
+                // Suscripción cancelada correctamente
+                return response()->json(['success' => true, 'message' => 'Suscripción cancelada exitosamente']);
             } else {
-                // Error al cancelar la suscripción
-                return response()->json(['error' => 'Error al cancelar la suscripción'], 500);
+                return response()->json(['success' => false, 'message' => 'Error al cancelar la suscripción'], $response['status']);
             }
         } catch (\Exception $e) {
-            // Manejo de errores de la solicitud
-            return response()->json(['error' => $e->getMessage()], 500);
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
     }
 }
