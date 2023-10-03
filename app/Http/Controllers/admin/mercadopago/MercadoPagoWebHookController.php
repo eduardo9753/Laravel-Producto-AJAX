@@ -14,23 +14,7 @@ class MercadoPagoWebHookController extends Controller
         $jsonData = $request->getContent(); // Obtén la cadena JSON de la solicitud
         $dataArray = json_decode($jsonData, true); // Convierte la cadena JSON en un arreglo asociativo
 
-        //Verifica si existe un campo "preapproval_id" en los datos
-        if (isset($dataArray['preapproval_id'])) {
-
-            $subscriptionId = $dataArray['preapproval_id'];
-            $save = Pay::create([
-                'status' => 'approved',
-                'pago_id' => $subscriptionId, //con esta id se puede gestionar los datos en mercado pago
-                'tipo_pago' => 'Suscripcion', //$request->payment_type
-            ]);
-
-            if ($save) {
-                Log::info('Datos de la suscripcion guardados correctamente');
-                return response()->json(['status' => 'ok']);
-            } else {
-                Log::error('Datos de la suscripcion no guardados');
-            }
-        } else if ($dataArray['type'] === 'payment') {
+        if ($dataArray['type'] === 'payment') {
 
             $id_pago = $dataArray['data']['id'];
             $save = Pay::create([
@@ -46,7 +30,7 @@ class MercadoPagoWebHookController extends Controller
                 Log::error('Datos de la compra no guardados');
             }
         } else {
-            Log::error('Dato no reconocido');
+            Log::info('Datos de la compra guardado correctamente' . $request);
         }
     }
 }
