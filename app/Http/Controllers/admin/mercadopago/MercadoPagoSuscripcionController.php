@@ -29,8 +29,8 @@ class MercadoPagoSuscripcionController extends Controller
         // Define las credenciales de acceso (token) de tu cuenta de Mercado Pago
         $accessToken = config('mercadopago.token'); // Reemplaza con tu token real
 
-        // Construye la URL del endpoint de cancelación de suscripción
-        $url = "https://api.mercadopago.com/v1/preapproval/$request->preapprovalId/cancel";
+        // Realiza la cancelación de la suscripción
+        $url = "https://api.mercadopago.com/preapproval/$request->preapprovalId";
 
         try {
             // Realiza una solicitud POST a la URL de cancelación
