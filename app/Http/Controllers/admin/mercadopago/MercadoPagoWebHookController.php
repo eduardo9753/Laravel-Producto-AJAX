@@ -11,18 +11,15 @@ class MercadoPagoWebHookController extends Controller
 {
     public function handle(Request $request)
     {
-        // Obtén los datos del webhook
+        /* Obtén los datos del webhook
         $payload = $request->all();
-
         // Registra los datos en el log para depuración (puedes eliminar esto en producción)
-        Log::info('Webhook Received:', $payload);
+        Log::info('Webhook Received:', $payload);*/
 
-        // Guarda los datos del $request en la sesión
-        $request->session()->put('data', $payload);
-        //$jsonData = $request->getContent(); // Obtén la cadena JSON de la solicitud
-        //$dataArray = json_decode($jsonData, true); // Convierte la cadena JSON en un arreglo asociativo
+        $jsonData = $request->getContent(); // Obtén la cadena JSON de la solicitud
+        $dataArray = json_decode($jsonData, true); // Convierte la cadena JSON en un arreglo asociativo
 
-        /*if ($dataArray['type'] === 'payment') {
+        if ($dataArray['type'] === 'payment') {
 
             $id_pago = $dataArray['data']['id'];
             $save = Pay::create([
@@ -38,8 +35,8 @@ class MercadoPagoWebHookController extends Controller
                 Log::error('Datos de la compra no guardados');
             }
         } else {
-            Log::info('Datos de la compra guardado correctamente' . $request);
-        }*/
+            
+        }
     }
 
     public function webhookdata()
