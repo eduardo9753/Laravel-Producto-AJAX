@@ -60,7 +60,7 @@ Route::get('/mercadopago/pending', [MercadoPagoControllerCliente::class, 'pendin
 
 
 //webHook de mercadopago para pagos y suscripciones
-Route::post('webhooks', [MercadoPagoWebHookController::class, 'index'])->name('admin.mercadopago.webhook');
+Route::post('/mercado/webhooks', [MercadoPagoWebHookController::class, 'index'])->name('admin.mercadopago.webhook');
 Route::get('/webhook/tes', [MercadoPagoWebHookController::class, 'webhookdata'])->name('webhook.tes');
 
 
