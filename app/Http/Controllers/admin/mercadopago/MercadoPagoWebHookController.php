@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Log;
 
 class MercadoPagoWebHookController extends Controller
 {
-    public function handle(Request $request)
+    public function index(Request $request)
     {
         /* Obtén los datos del webhook
         $payload = $request->all();
