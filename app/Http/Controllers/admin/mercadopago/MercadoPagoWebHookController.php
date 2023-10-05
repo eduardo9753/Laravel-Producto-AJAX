@@ -30,7 +30,6 @@ class MercadoPagoWebHookController extends Controller
 
             if ($save) {
                 Log::info('Datos de la compra guardado correctamente');
-                return response()->json(['status' => 'ok']);
             } else {
                 Log::error('Datos de la compra no guardados');
             }
