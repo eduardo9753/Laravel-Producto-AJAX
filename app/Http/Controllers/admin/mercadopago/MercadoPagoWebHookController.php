@@ -14,7 +14,7 @@ class MercadoPagoWebHookController extends Controller
         /* Obtén los datos del webhook
         $payload = $request->all();
         // Registra los datos en el log para depuración (puedes eliminar esto en producción)
-        Log::info('Webhook Received:', $payload);*/
+        Log::info('Webhook Received:', $payload);
 
         $jsonData = $request->getContent(); // Obtén la cadena JSON de la solicitud
         $dataArray = json_decode($jsonData, true); // Convierte la cadena JSON en un arreglo asociativo
@@ -35,7 +35,7 @@ class MercadoPagoWebHookController extends Controller
             }
         } else {
             
-        }
+        }*/
     }
 
     public function webhookdata()
