@@ -39,7 +39,7 @@ class JuiceController extends Controller
         //if ($count >= 1) { return; }
         $validator = Validator::make($request->all(), [
             'nombre'  => 'required|string|unique:juices',
-            'imagen' => 'required|image',
+            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Ajusta los tipos y tamaño según tus necesidades
             'precio' => 'required',
             'descripcion' => 'required',
         ]);
