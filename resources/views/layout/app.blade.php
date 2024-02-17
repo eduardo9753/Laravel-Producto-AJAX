@@ -69,13 +69,13 @@
 
 
     <!--FILES JS-->
-    <script src="{{ asset('admin/js/ajaxJuice.js') }}"></script>
-    <script src="{{ asset('admin/js/ajaxType.js') }}"></script>
-    <script src="{{ asset('admin/js/ajaxSupply.js') }}"></script>
-    <script src="{{ asset('admin/js/ajaxCategory.js') }}"></script>
-    <script src="{{ asset('admin/js/ajaxProovedor.js') }}"></script>
-    <script src="{{ asset('admin/js/cargarImagen.js') }}"></script>
-    <script src="{{ asset('admin/js/cargarImagenEdit.js') }}"></script>
+    <script src="{{ asset('js/admin/ajaxJuice.js') }}"></script>
+    <script src="{{ asset('js/admin/ajaxType.js') }}"></script>
+    <script src="{{ asset('js/admin/ajaxSupply.js') }}"></script>
+    <script src="{{ asset('js/admin/ajaxCategory.js') }}"></script>
+    <script src="{{ asset('js/admin/ajaxProovedor.js') }}"></script>
+    <script src="{{ asset('js/admin/cargarImagen.js') }}"></script>
+    <script src="{{ asset('js/admin/cargarImagenEdit.js') }}"></script>
 
 </body>
 
