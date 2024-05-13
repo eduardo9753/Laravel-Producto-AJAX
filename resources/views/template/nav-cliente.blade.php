@@ -6,9 +6,9 @@
                 <ul class="menu-item">
                     <li class="item"><a href="{{ route('inicio.index') }}">Inicio</a></li>
                     <li class="item"><a href="{{ route('menu.index') }}">El Menú</a></li>
-                    <li class="item"><a href="{{ route('stripe.index') }}">Pago Stripe</a></li>
+                    {{-- <li class="item"><a href="{{ route('stripe.index') }}">Pago Stripe</a></li>
                     <li class="item"><a href="{{ route('mercadopago.index') }}">Pago MercadoPago</a></li>
-                    <li class="item"><a href="{{ route('mercadopago.suscription.index') }}">Pago MercadoPago Suscripcion</a></li>
+                    <li class="item"><a href="{{ route('mercadopago.suscription.index') }}">Pago MercadoPago Suscripcion</a></li> --}}
                     <li class="item"><a href="{{ route('contacto.index') }}">Contacto</a></li>
                 </ul>
             </nav>

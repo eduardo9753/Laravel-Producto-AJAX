@@ -10,34 +10,53 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('home.index') }}">Casa</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('supply.index') }}">Suministros</a>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Gestión Suministros
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ route('provider.index') }}" class="dropdown-item">Proveedores</a>
+                        </li>
+                        <li><a href="{{ route('category.index') }}" class="dropdown-item">Categorias</a>
+                        </li>
+                        <li><a href="{{ route('supply.index') }}" class="dropdown-item">Suministros</a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('category.index') }}">Categorias</a>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Gestión Jugos
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ route('tipo.index') }}" class="dropdown-item">Tipos</a></li>
+                        <li><a href="{{ route('juice.index') }}" class="dropdown-item">Jugos</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('provider.index') }}">Proveedores</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('juice.index') }}">Jugos</a>
-                </li>
+
+                {{-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Gestión Mercadopago
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ route('admin.mercadopago.index') }}" class="dropdown-item">Pagos</a></li>
+                        <li><a href="{{ route('admin.mercadopago.suscription.index') }}"
+                                class="dropdown-item">Suscripciones</a></li>
+                    </ul>
+                </li> --}}
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('caja.index') }}">Caja</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('tipo.index') }}">Tipos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.mercadopago.index') }}">Pagos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.mercadopago.suscription.index') }}">Suscripciones</a>
-                </li>
+
                 <li class="nav-item">
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <input type="submit" class="btn-salir" value="Salir">
+                        <input type="submit" class="btn btn-danger" value="Salir">
                     </form>
                 </li>
             </ul>
